@@ -9,10 +9,6 @@ public class ButttonScale : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
-    private void Update()
-    {
-    }
-
     private void OnMouseDown()
     {
         Debug.Log("OnMouseDown");

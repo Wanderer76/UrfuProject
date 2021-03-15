@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 209738401}
   - component: {fileID: 209738400}
   - component: {fileID: 209738403}
+  - component: {fileID: 209738404}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -311,7 +312,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 480, y: 51.21987}
+  m_SizeDelta: {x: 480, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209738400
 MonoBehaviour:
@@ -405,6 +406,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f82a3cc398cce4d9fdafb04d5966ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &209738404
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209738398}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 480, y: 51}
+  m_EdgeRadius: 0
 --- !u!1 &378346393
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +719,7 @@ GameObject:
   - component: {fileID: 801261964}
   - component: {fileID: 801261963}
   - component: {fileID: 801261966}
+  - component: {fileID: 801261967}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -717,7 +745,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 480, y: 51.851875}
+  m_SizeDelta: {x: 480, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &801261963
 MonoBehaviour:
@@ -822,6 +850,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f82a3cc398cce4d9fdafb04d5966ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &801261967
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801261961}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 480, y: 51}
+  m_EdgeRadius: 0
 --- !u!1 &806915109
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +967,7 @@ GameObject:
   - component: {fileID: 928156097}
   - component: {fileID: 928156096}
   - component: {fileID: 928156099}
+  - component: {fileID: 928156100}
   m_Layer: 5
   m_Name: StartGameButton
   m_TagString: Untagged
@@ -938,7 +993,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 480, y: 51.851875}
+  m_SizeDelta: {x: 480, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &928156096
 MonoBehaviour:
@@ -1032,6 +1087,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f82a3cc398cce4d9fdafb04d5966ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &928156100
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928156094}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 480, y: 51}
+  m_EdgeRadius: 0
 --- !u!1 &1898465667
 GameObject:
   m_ObjectHideFlags: 0
