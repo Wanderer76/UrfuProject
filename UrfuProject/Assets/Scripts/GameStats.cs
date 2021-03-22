@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public static class GameStats
+public class GameStats
 {
 
     public enum Scenes
@@ -18,6 +19,8 @@ public static class GameStats
         Biology,
         Chemestry
     }
+
+    public static UnityEvent OnStatsChanged = new UnityEvent();
 
     public static int Money { get; set; } = 1024;
 
@@ -45,6 +48,15 @@ public static class GameStats
             case ScienceKoef.Chemestry:
                 SciencePoints += 200;
                 break;
+        }
+    }
+    public static void Upgrade(int count, GameStats.ScienceKoef koef)
+    {
+        if (Money >= count)
+        {
+            Money -= count;
+            AddSciencePoints(koef);
+            OnStatsChanged.Invoke();
         }
     }
 }

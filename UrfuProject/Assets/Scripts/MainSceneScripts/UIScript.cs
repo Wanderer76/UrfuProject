@@ -10,57 +10,52 @@ public class UIScript : MonoBehaviour
     private const string MoneyText = "Деньги:";
 
     public GameObject panel;
-
+    private GameObject actionElement;
     public Text sciencePointsText;
     public Text moneyText;
 
     private void Awake()
     {
+        actionElement = GameObject.Find("ActionsElement");
         UpdateStatisticUI();
     }
-
+    private void Start()
+    {
+        GameStats.OnStatsChanged.AddListener(UpdateStatisticUI);
+    }
     private void UpdateStatisticUI()
     {
         sciencePointsText.text = $"{ScienceText}{GameStats.SciencePoints}";
         moneyText.text = $"{MoneyText}{GameStats.Money}";
     }
-    
+
     public void OnMathBought(int count)
     {
-        if (GameStats.Money >= count)
-            Upgrade(count, GameStats.ScienceKoef.Math);
+        GameStats.Upgrade(count, GameStats.ScienceKoef.Math);
     }
     public void OnPhysicsBought(int count)
     {
-        if (GameStats.Money >= count)
-            Upgrade(count, GameStats.ScienceKoef.Physics);
+        GameStats.Upgrade(count, GameStats.ScienceKoef.Physics);
     }
     public void OnBiologyBought(int count)
     {
-        if (GameStats.Money >= count)
-            Upgrade(count, GameStats.ScienceKoef.Biology);
+        GameStats.Upgrade(count, GameStats.ScienceKoef.Biology);
     }
     public void OnChemestryBought(int count)
     {
-        if (GameStats.Money >= count)
-            Upgrade(count, GameStats.ScienceKoef.Chemestry);
-    }
-
-    private void Upgrade(int count, GameStats.ScienceKoef koef)
-    {
-        GameStats.Money -= count;
-        GameStats.AddSciencePoints(koef);
-        UpdateStatisticUI();
+        GameStats.Upgrade(count, GameStats.ScienceKoef.Chemestry);
     }
 
     public void OnQuitClicked()
     {
         panel.SetActive(true);
+        actionElement.SetActive(false);
     }
 
     public void Continue()
     {
         panel.SetActive(false);
+        actionElement.SetActive(true);
     }
 
     public void LoadMainMenu()
@@ -72,5 +67,4 @@ public class UIScript : MonoBehaviour
     {
         Application.Quit();
     }
-
 }
