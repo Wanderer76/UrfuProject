@@ -205,7 +205,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 433904729}
+      - m_Target: {fileID: 925123215}
         m_MethodName: OnBiologyBought
         m_Mode: 3
         m_Arguments:
@@ -660,7 +660,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 433904729}
+      - m_Target: {fileID: 925123215}
         m_MethodName: OnChemestryBought
         m_Mode: 3
         m_Arguments:
@@ -1248,6 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56485585e4c02c4aaf877c280257175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeButtons: []
   panel: {fileID: 914234609}
   sciencePointsText: {fileID: 1312670188}
   moneyText: {fileID: 212535245}
@@ -1286,8 +1287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -259.99997, y: -41.999985}
-  m_SizeDelta: {x: 240, y: 100}
+  m_AnchoredPosition: {x: -259.99997, y: -42}
+  m_SizeDelta: {x: 180, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540001500
 MonoBehaviour:
@@ -1774,6 +1775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 925123213}
   - component: {fileID: 925123214}
+  - component: {fileID: 925123215}
   m_Layer: 5
   m_Name: UpgradeGroup
   m_TagString: Untagged
@@ -1801,8 +1803,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.71400005, y: 0.40646648}
   m_AnchorMax: {x: 0.71400005, y: 0.40646648}
-  m_AnchoredPosition: {x: 193.5, y: -43.58662}
-  m_SizeDelta: {x: 242.9064, y: 246.05685}
+  m_AnchoredPosition: {x: 193.5, y: -43}
+  m_SizeDelta: {x: 242, y: 246}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &925123214
 MonoBehaviour:
@@ -1828,6 +1830,23 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &925123215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925123212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c294c20f51aa54bb0f075928225ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButtons:
+  - {fileID: 1370655724}
+  - {fileID: 1416584932}
+  - {fileID: 1416584932}
+  - {fileID: 240825431}
 --- !u!1 &926870155
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,7 +2484,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 433904729}
+      - m_Target: {fileID: 925123215}
         m_MethodName: OnMathBought
         m_Mode: 3
         m_Arguments:
@@ -2635,7 +2654,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 433904729}
+      - m_Target: {fileID: 925123215}
         m_MethodName: OnPhysicsBought
         m_Mode: 3
         m_Arguments:
@@ -3046,8 +3065,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 119, y: -13}
-  m_SizeDelta: {x: 250, y: 170}
+  m_AnchoredPosition: {x: 97, y: -9}
+  m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1825423455
 MonoBehaviour:
@@ -3085,7 +3104,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 200, y: 150}
+  m_Size: {x: 200, y: 100}
   m_EdgeRadius: 0
 --- !u!114 &1825423457
 MonoBehaviour:

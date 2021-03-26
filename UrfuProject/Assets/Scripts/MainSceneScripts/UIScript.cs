@@ -1,70 +1,68 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UIScript : MonoBehaviour
+namespace UrfuProject
 {
-    private const string ScienceText = "Научные очки:";
-    private const string MoneyText = "Деньги:";
+    public class UIScript : MonoBehaviour
+    {
 
-    public GameObject panel;
-    private GameObject actionElement;
-    public Text sciencePointsText;
-    public Text moneyText;
+        private const string ScienceText = "Научные очки:";
+        private const string MoneyText = "Деньги:";
 
-    private void Awake()
-    {
-        actionElement = GameObject.Find("ActionsElement");
-        UpdateStatisticUI();
-    }
-    private void Start()
-    {
-        GameStats.OnStatsChanged.AddListener(UpdateStatisticUI);
-    }
-    private void UpdateStatisticUI()
-    {
-        sciencePointsText.text = $"{ScienceText}{GameStats.SciencePoints}";
-        moneyText.text = $"{MoneyText}{GameStats.Money}";
-    }
+        public GameObject exitPanel;
+        public GameObject questsPanel;
+        private GameObject actionElement;
 
-    public void OnMathBought(int count)
-    {
-        GameStats.Upgrade(count, GameStats.ScienceKoef.Math);
-    }
-    public void OnPhysicsBought(int count)
-    {
-        GameStats.Upgrade(count, GameStats.ScienceKoef.Physics);
-    }
-    public void OnBiologyBought(int count)
-    {
-        GameStats.Upgrade(count, GameStats.ScienceKoef.Biology);
-    }
-    public void OnChemestryBought(int count)
-    {
-        GameStats.Upgrade(count, GameStats.ScienceKoef.Chemestry);
-    }
+        public Text sciencePointsText;
+        public Text moneyText;
 
-    public void OnQuitClicked()
-    {
-        panel.SetActive(true);
-        actionElement.SetActive(false);
-    }
+        private void Awake()
+        {
+            actionElement = GameObject.Find("ActionsElement");
+            UpdateStatisticUI();
+        }
+        private void Start()
+        {
+            GameStatistic.OnStatsChanged.AddListener(UpdateStatisticUI);
+        }
+        private void UpdateStatisticUI()
+        {
+            sciencePointsText.text = $"{ScienceText}{GameStatistic.SciencePoints}";
+            moneyText.text = $"{MoneyText}{GameStatistic.Money}";
+        }
 
-    public void Continue()
-    {
-        panel.SetActive(false);
-        actionElement.SetActive(true);
-    }
+        public void OnQuitClicked()
+        {
+            exitPanel.SetActive(true);
+            actionElement.SetActive(false);
+        }
 
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene((int)GameStats.Scenes.Menu);
-    }
+        public void Continue()
+        {
+            exitPanel.SetActive(false);
+            actionElement.SetActive(true);
+        }
 
-    public void Quit()
-    {
-        Application.Quit();
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene((int)GameStatistic.Scenes.Menu);
+        }
+
+        public void ShowQuestsTable()
+        {
+            questsPanel.SetActive(true);
+            actionElement.SetActive(false);
+        }
+        public void HideQuestsTable()
+        {
+            questsPanel.SetActive(false);
+            actionElement.SetActive(true);
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
+        }
     }
 }
