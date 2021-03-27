@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
 using UnityEngine.Events;
 
 namespace UrfuProject
@@ -30,6 +28,7 @@ namespace UrfuProject
         public static int LaboratoryLevel { get; set; } = 2;
 
         public static int QuestCompleted { get; }
+
 
         public static void AddLaboratoryPoints(Sciences koef)
         {

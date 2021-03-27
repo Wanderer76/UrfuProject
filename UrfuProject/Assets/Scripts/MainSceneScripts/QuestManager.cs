@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace UrfuProject
 {
@@ -10,10 +11,13 @@ namespace UrfuProject
         public List<Quest> Quests { get; private set; }
 
         public UnityEvent<Quest> OnQuestStart;
+        public UnityEvent OnQuestCountChanged;
 
-        public QuestManager()
+        private void Start()
         {
             Quests = new List<Quest>();
+            AddQuest("Матан", "Взвесить", 3, 230, QuestType.Unique);
+            AddQuest("Матан", "Взвесить", 3, 230, QuestType.Unique);
         }
 
         public void AddQuest(string title,string description, int sceneIndex,int reward, QuestType type)
@@ -23,6 +27,7 @@ namespace UrfuProject
 
             var quest = new Quest(title, description, sceneIndex, reward, type);
             Quests.Add(quest);
+            OnQuestCountChanged?.Invoke();
         }
 
         public void StartQuest(int index)

@@ -178,8 +178,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 150, y: 100}
-  m_Spacing: {x: 0, y: 0}
+  m_CellSize: {x: 150, y: 150}
+  m_Spacing: {x: 150, y: 50}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &21400711
@@ -194,6 +194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd1345695ac1a442a177baa0b2a4140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questButtonPrefab: {fileID: 8456510610545810080, guid: d2ecada469072f04fadc5e6f8f83453f,
+    type: 3}
+  notyficationImage: {fileID: 1742732170}
+  questManager: {fileID: 433904730}
 --- !u!1 &70090780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1370,7 @@ GameObject:
   - component: {fileID: 433904727}
   - component: {fileID: 433904726}
   - component: {fileID: 433904729}
+  - component: {fileID: 433904730}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1454,6 +1459,21 @@ MonoBehaviour:
   questsPanel: {fileID: 1932453325}
   sciencePointsText: {fileID: 1312670188}
   moneyText: {fileID: 212535245}
+--- !u!114 &433904730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433904725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d178be5c12ed7a48b2186ec5d158301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnQuestCountChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &540001498
 GameObject:
   m_ObjectHideFlags: 0
@@ -3246,7 +3266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1742732171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3599,7 +3619,6 @@ GameObject:
   - component: {fileID: 1932453326}
   - component: {fileID: 1932453329}
   - component: {fileID: 1932453328}
-  - component: {fileID: 1932453327}
   m_Layer: 5
   m_Name: QuestPanel
   m_TagString: Untagged
@@ -3628,18 +3647,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -100, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1932453327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932453325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d178be5c12ed7a48b2186ec5d158301, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1932453328
 MonoBehaviour:
   m_ObjectHideFlags: 0
