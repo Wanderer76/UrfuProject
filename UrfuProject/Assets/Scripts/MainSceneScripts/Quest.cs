@@ -6,7 +6,7 @@
         Regular
     }
 
-    public class Quest
+    public struct Quest
     {
         public Quest(string title, string mainText, int sceneIndex, int reward, QuestType type)
         {
