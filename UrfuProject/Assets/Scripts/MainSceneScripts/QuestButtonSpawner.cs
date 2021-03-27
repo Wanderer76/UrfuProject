@@ -16,7 +16,12 @@ namespace UrfuProject
         public QuestManager questManager;
 
         private void Awake()
-        {   
+        {
+            CreateButtons();
+        }
+
+        private void CreateButtons()
+        {
             for (var i = 0; i < questManager.Quests.Count; i++)
             {
                 if (quests.Capacity > i)
@@ -26,7 +31,19 @@ namespace UrfuProject
             for (var i = 0; i < quests.Count; i++)
             {
                 quests[i].SetText($"{questManager.Quests[i].Title}\n{questManager.Quests[i].MainText}");
+                quests[i].SceneIndex = 2;
             }
+        }
+
+
+        private void UpdateButtons()
+        {
+            quests.Clear();
+            foreach (var i in quests)
+            {
+                Destroy(i);
+            }
+            CreateButtons();
         }
 
         private void Start()
@@ -40,6 +57,8 @@ namespace UrfuProject
                 quests.Add(Instantiate(questButtonPrefab, transform).GetComponent<QuestButton>());
                 quests[quests.Count - 1].SetText($"{questManager.Quests[lastQuestIndex].Title}\n{questManager.Quests[lastQuestIndex].MainText}");
             });
+
+            questManager.OnQuestCompleted.AddListener(UpdateButtons);
         }
     }
 }

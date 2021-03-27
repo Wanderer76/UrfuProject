@@ -1471,6 +1471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d178be5c12ed7a48b2186ec5d158301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnQuestCompleted:
+    m_PersistentCalls:
+      m_Calls: []
   OnQuestCountChanged:
     m_PersistentCalls:
       m_Calls: []
