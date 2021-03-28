@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace UrfuProject
 {
@@ -11,15 +10,25 @@ namespace UrfuProject
         public List<Quest> Quests { get; private set; }
 
         public UnityEvent<Quest> OnQuestStart;
-        public UnityEvent OnQuestCompleted;
-        public UnityEvent OnQuestCountChanged;
+        public UnityEvent<int> OnQuestCompleted;
+        public static UnityEvent OnQuestCountChanged = new UnityEvent();
+
 
         private void Start()
         {
             Quests = new List<Quest>();
-            AddQuest("Матан", "Взвесить", QuestLevel.First, 230, QuestType.Unique);
-            AddQuest("Матан", "Взвесить", QuestLevel.First, 230, QuestType.Unique);
+            GetQuest();
         }
+
+        private void GetQuest()
+        {
+            for (var i = 1; i <= 10; i++)
+            {
+                Debug.Log($"GetQuest total quests - {Quests.Count}");
+                AddQuest("Матан", "Взвесить", QuestLevel.First, 230 * i, QuestType.Unique);
+            }
+        }
+
 
         public void AddQuest(string title,string description, QuestLevel level,int reward, QuestType type)
         {
@@ -47,14 +56,14 @@ namespace UrfuProject
 
         public void QuestCompleted(int index)
         {
-            if (Quests.Count > index)
+            if (Quests.Count >= index)
                 throw new IndexOutOfRangeException();
 
             GameStatistic.Money += Quests[index].Reward;
             GameStatistic.AddQuestPoint(Quests[index].Type);
             GameStatistic.OnStatsChanged?.Invoke();
             RemoveQuest(index);
-            OnQuestCompleted?.Invoke();
+            OnQuestCompleted?.Invoke(index);
         }
 
     }

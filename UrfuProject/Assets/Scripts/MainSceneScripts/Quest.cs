@@ -15,7 +15,7 @@ namespace UrfuProject
         Fourth
     }
 
-    public struct Quest
+    public class Quest
     {
         public Quest(string title, string mainText, int reward, QuestType type, QuestLevel level)
         {

@@ -7,12 +7,14 @@ namespace UrfuProject
     public class UIScript : MonoBehaviour
     {
 
-        private const string ScienceText = "Научные очки:";
-        private const string MoneyText = "Деньги:";
+        private const string ScienceText = "Научные очки";
+        private const string MoneyText = "Деньги";
 
         public GameObject exitPanel;
         public GameObject questsPanel;
         private GameObject actionElement;
+
+        public GameObject notificationImage;
 
         public Text sciencePointsText;
         public Text moneyText;
@@ -25,23 +27,24 @@ namespace UrfuProject
         private void Start()
         {
             GameStatistic.OnStatsChanged.AddListener(UpdateStatisticUI);
+            QuestManager.OnQuestCountChanged.AddListener(() => {
+                notificationImage.SetActive(true);
+            });
         }
         private void UpdateStatisticUI()
         {
-            sciencePointsText.text = $"{ScienceText}{GameStatistic.SciencePoints}";
-            moneyText.text = $"{MoneyText}{GameStatistic.Money}";
+            sciencePointsText.text = $"{ScienceText}:{GameStatistic.SciencePoints}";
+            moneyText.text = $"{MoneyText}:{GameStatistic.Money}";
         }
 
         public void OnQuitClicked()
         {
-            exitPanel.SetActive(true);
-            actionElement.SetActive(false);
+            ActivatePanel(exitPanel);
         }
 
         public void Continue()
         {
-            exitPanel.SetActive(false);
-            actionElement.SetActive(true);
+           DeactivatePanel(exitPanel);
         }
 
         public void LoadMainMenu()
@@ -51,18 +54,30 @@ namespace UrfuProject
 
         public void ShowQuestsTable()
         {
-            questsPanel.SetActive(true);
-            actionElement.SetActive(false);
+            notificationImage.SetActive(false);
+            ActivatePanel(questsPanel);
         }
         public void HideQuestsTable()
         {
-            questsPanel.SetActive(false);
-            actionElement.SetActive(true);
+            DeactivatePanel(questsPanel);
         }
 
         public void Quit()
         {
             Application.Quit();
         }
+
+        private void ActivatePanel(GameObject showed)
+        {
+            showed.SetActive(true);
+            actionElement.SetActive(false);
+        }
+        private void DeactivatePanel(GameObject showed)
+        {
+            showed.SetActive(false);
+            actionElement.SetActive(true);
+        }
+
+
     }
 }

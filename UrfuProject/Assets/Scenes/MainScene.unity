@@ -194,9 +194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd1345695ac1a442a177baa0b2a4140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questButtonPrefab: {fileID: 8456510610545810080, guid: d2ecada469072f04fadc5e6f8f83453f,
+  buttonPrefab: {fileID: 8456510610545810080, guid: d2ecada469072f04fadc5e6f8f83453f,
     type: 3}
-  notyficationImage: {fileID: 1742732170}
+  parents: {fileID: 21400708}
   questManager: {fileID: 433904730}
 --- !u!1 &70090780
 GameObject:
@@ -1457,6 +1457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitPanel: {fileID: 914234609}
   questsPanel: {fileID: 1932453325}
+  notificationImage: {fileID: 1742732170}
   sciencePointsText: {fileID: 1312670188}
   moneyText: {fileID: 212535245}
 --- !u!114 &433904730
@@ -1471,12 +1472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d178be5c12ed7a48b2186ec5d158301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnQuestCompleted:
-    m_PersistentCalls:
-      m_Calls: []
-  OnQuestCountChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &540001498
 GameObject:
   m_ObjectHideFlags: 0
@@ -3269,7 +3264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1742732171
 RectTransform:
   m_ObjectHideFlags: 0
