@@ -7,53 +7,92 @@ using UnityEngine;
 
 public class MathQuest : MonoBehaviour
 {
-    [Range(0f,10f)]
-    private const float DistanseBetweenColleders = 1f;
-    
-    [SerializeField]
-    private const float YOffset= -3f;
 
-    public GameObject[] boxes;
-    private List<DragObject> positions = new List<DragObject>();
+    public List<GameObject> boxes;
+
+    public List<GameObject> boxColliders;
+
+    private List<GameObject> positions = new List<GameObject>();
+
     public BoxCollider2D platform;
 
     private void Awake()
     {
+        boxColliders = boxes;
+        SortMasses(boxes);
     }
 
-    private static void SortMasses(GameObject[] sorted)
+    private void SortXCoordinates(List<GameObject> sorted)
     {
-        for (var i = 0; i < sorted.Length; i++)
+        sorted.Sort((first, second) =>
         {
-            var rigidbody1 = sorted[i].GetComponent<Rigidbody2D>();
-            for (var j = 1; j < sorted.Length; j++)
+            var firstX = first.GetComponent<Transform>().position.x;
+            var secondX = second.GetComponent<Transform>().position.x;
+            if (firstX > secondX)
+                return -1;
+            else
+                return 1;
+        });
+    }
+
+    private void SortMasses(List<GameObject> ls)
+    {
+        ls.Sort((first, second) =>
+        {
+            var firstMass = first.GetComponent<Rigidbody2D>().mass;
+            var secondMass = second.GetComponent<Rigidbody2D>().mass;
+            if (firstMass > secondMass)
+                return -1;
+            else
+                return 1;
+        });
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        foreach (var i in boxColliders)
+        {
+            if (collision.gameObject == i)
             {
-                var rigidbody2 = sorted[j].GetComponent<Rigidbody2D>();
-                if (rigidbody1.mass < rigidbody2.mass)
-                {
-                    var temp = rigidbody1.mass;
-                    rigidbody1.mass = rigidbody2.mass;
-                    rigidbody1.mass = temp;
-                }
+                Debug.Log("Trigger enter");
+                positions.Add(i);
             }
         }
+        SortXCoordinates(positions);
     }
 
-    private void Update()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        var pos = new HashSet<DragObject>();
-
-        for (int i = 0; i < boxes.Length; i++)
+        foreach (var i in boxColliders)
         {
-            var box = boxes[i].GetComponent<DragObject>();
-            if (platform.Distance(box.GetComponent<BoxCollider2D>()).distance < DistanseBetweenColleders
-                && box.transform.position.y > YOffset)
-                pos.Add(box);
+            if (collision.gameObject == i)
+            {
+                Debug.Log("Trigger exit");
+                positions.Remove(i);
+            }
         }
-        Debug.Log($"Count - {pos.Count}");
-        if (pos.Count == boxes.Length)
-            Debug.Log("OK");
-        else
-            Debug.Log("No");
+        SortXCoordinates(positions);
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (positions.Count != boxes.Count)
+            return;
+
+        bool isEqual = true;
+        var index = 0;
+        foreach (var i in positions)
+        {
+            if (i != boxes[index])
+            {
+                isEqual = false;
+                Debug.Log("No");
+                break;
+            }
+            index++;
+        }
+        if (isEqual)
+            Debug.Log("Yes");
     }
 }
