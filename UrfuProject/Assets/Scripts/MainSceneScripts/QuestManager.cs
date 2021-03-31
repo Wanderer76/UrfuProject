@@ -22,7 +22,7 @@ namespace UrfuProject
 
         private void GetQuest()
         {
-            for (var i = 1; i <= 10; i++)
+            for (var i = 1; i <= 1; i++)
             {
                 Debug.Log($"GetQuest total quests - {Quests.Count}");
                 AddQuest("Матан", "Взвесить", QuestLevel.First, 230 * i, QuestType.Unique);

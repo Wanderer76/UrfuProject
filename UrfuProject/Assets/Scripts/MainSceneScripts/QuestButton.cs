@@ -34,9 +34,8 @@ namespace UrfuProject
 
         public void OnMouseDown()
         {
-            //SceneManager.LoadScene(SceneIndex);
-            OnDelete?.Invoke();
             Destroy();
+            SceneManager.LoadScene(SceneIndex);
         }
 
         public void SetText(string text)
