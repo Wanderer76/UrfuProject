@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace UrfuProject
 {
@@ -15,31 +16,53 @@ namespace UrfuProject
         Fourth
     }
 
-    public class Quest
+    public enum ScienceType
     {
-        public Quest(string title, string mainText, int reward, QuestType type, QuestLevel level)
+        Math,
+        Physics,
+        Chemestry,
+        Biology
+    }
+
+    public struct Quest
+    {
+
+        public Quest(string title, string mainText, int reward, QuestType type, QuestLevel level, ScienceType science)
         {
             Title = title;
             MainText = mainText;
             Level = level;
             Reward = reward;
             Type = type;
-            if(type == QuestType.Regular)
+            SceneIndex = 0;
+            if (type == QuestType.Unique)
             {
-                throw new Exception("not created");
+                switch (science)
+                {
+                    case ScienceType.Math:
+                        if (level == QuestLevel.First)
+                            SceneIndex =  2;
+                        if (level == QuestLevel.Second)
+                            SceneIndex = 3;
+                        break;
+                    case ScienceType.Physics:
+                        SceneIndex = 2;
+                        break;
+                    case ScienceType.Chemestry:
+                        SceneIndex = 2;
+                        break;
+                    case ScienceType.Biology:
+                        SceneIndex = 2;
+                        break;
+                }
             }
             else
             {
-                switch (level)
-                {
-                    case QuestLevel.First:
-                        SceneIndex = (int)QuestLevel.First + (int)GameStatistic.Sciences.Math;
-                        break;
-                    default:
-                        throw new ArgumentException();
-                }
+                SceneIndex = 0;
             }
         }
+
+       
 
         public string Title { get; private set; }
         public string MainText { get; private set; }

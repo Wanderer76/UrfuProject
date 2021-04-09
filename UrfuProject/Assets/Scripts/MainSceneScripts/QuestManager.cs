@@ -13,29 +13,29 @@ namespace UrfuProject
         public UnityEvent<int> OnQuestCompleted;
         public static UnityEvent OnQuestCountChanged = new UnityEvent();
 
+        private readonly Database database = Database.Instance();
+
 
         private void Start()
         {
             Quests = new List<Quest>();
-            GetQuest();
+            GetNewQuest();
         }
 
-        private void GetQuest()
+        private void GetNewQuest()
         {
-            for (var i = 1; i <= 1; i++)
-            {
-                Debug.Log($"GetQuest total quests - {Quests.Count}");
-                AddQuest("Матан", "Взвесить", QuestLevel.First, 230 * i, QuestType.Unique);
-            }
+            //TODO Здесь квесты должны будут получатся из базы данных
+            AddQuest("Матан", "Взвесить", QuestLevel.First, 230, QuestType.Unique, ScienceType.Math);
+            AddQuest("Матан", "Что то", QuestLevel.Second, 230, QuestType.Unique, ScienceType.Math);
         }
 
 
-        public void AddQuest(string title,string description, QuestLevel level,int reward, QuestType type)
+        public void AddQuest(string title,string description, QuestLevel level,int reward, QuestType type, ScienceType science)
         {
             if(title == string.Empty || description == string.Empty)
                 throw new ArgumentException();
 
-            var quest = new Quest(title, description, reward, type, level);
+            var quest = new Quest(title, description, reward, type, level, science);
             Quests.Add(quest);
             OnQuestCountChanged?.Invoke();
         }
@@ -52,6 +52,7 @@ namespace UrfuProject
             if (index >= Quests.Count)
                 throw new IndexOutOfRangeException($"index - {index}");
             Quests.RemoveAt(index);
+            OnQuestCountChanged?.Invoke();
         }
 
         public void QuestCompleted(int index)

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UrfuProject
 {
-    public class MathQuest : MonoBehaviour
+    public class WeightQuest : MonoBehaviour
     {
 
         public GameObject winPanel;
@@ -23,7 +23,7 @@ namespace UrfuProject
 
             foreach (var i in boxes)
             {
-                i.GetComponent<Rigidbody2D>().mass = UnityEngine.Random.Range(2, 10);
+                i.GetComponent<Rigidbody2D>().mass = Random.Range(2, 10);
             }
 
             boxColliders = boxes;
