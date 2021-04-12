@@ -8,7 +8,6 @@ namespace UrfuProject
 
         public GameObject winPanel;
         public GameObject actionElements;
-
         public List<GameObject> boxes;
 
         private List<GameObject> boxColliders;

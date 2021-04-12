@@ -1,18 +1,27 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Winning : MonoBehaviour
+namespace UrfuProject
 {
-    public void Exit()
+    public class Winning : MonoBehaviour
     {
-        //TODO Save
-        Application.Quit();
-    }
+
+        QuestManager manager;
+        LevelManager levelManager;
+
+        public void Exit()
+        {
+            //TODO Save
+            Application.Quit();
+        }
 
 
-    public void Continue()
-    {
-        //TODO Save
-        SceneManager.LoadScene(1);
+        public void Continue()
+        {
+            //TODO Save
+            //manager.QuestCompleted();
+            QuestManager.OnQuestCompleted.Invoke(0);
+            LevelManager.OnQuestCompleted();
+        }
     }
 }

@@ -26,6 +26,19 @@ namespace UrfuProject
 
     public struct Quest
     {
+        public string Title { get; private set; }
+
+        public string MainText { get; private set; }
+
+        public int SceneIndex { get;  private set; }
+
+        public int Reward { get;  private set; }
+
+        public bool IsCompleted { get; set; }
+
+        public QuestLevel Level { get;  private set; }
+        
+        public QuestType Type { get; private set; }
 
         public Quest(string title, string mainText, int reward, QuestType type, QuestLevel level, ScienceType science)
         {
@@ -34,7 +47,8 @@ namespace UrfuProject
             Level = level;
             Reward = reward;
             Type = type;
-            SceneIndex = 0;
+            IsCompleted = false;
+            SceneIndex = 2;
             if (type == QuestType.Unique)
             {
                 switch (science)
@@ -61,15 +75,6 @@ namespace UrfuProject
                 SceneIndex = 0;
             }
         }
-
-       
-
-        public string Title { get; private set; }
-        public string MainText { get; private set; }
-        public int SceneIndex { get;  private set; }
-        public QuestLevel Level { get;  private set; }
-        public int Reward { get;  private set; }
-        public QuestType Type { get; private set; }
 
     }
 }

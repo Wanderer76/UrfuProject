@@ -17,6 +17,8 @@ namespace UrfuProject
 
         public UnityEvent<int> OnDelete;
 
+        public Button Button { get; set; }
+
         public QuestButton(string text, int scene, int index)
         {
             if (ButtonText == null)
@@ -29,7 +31,7 @@ namespace UrfuProject
 
         public void OnMouseDown()
         {
-            Destroy();
+            //Destroy();
             SceneManager.LoadScene(SceneIndex);
         }
 
@@ -45,6 +47,7 @@ namespace UrfuProject
 
         private void Awake()
         {
+            Button = GetComponent<Button>();
             ButtonText = GetComponentInChildren<Text>();
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace UrfuProject
 {
@@ -10,16 +11,35 @@ namespace UrfuProject
         public List<Quest> Quests { get; private set; }
 
         public UnityEvent<Quest> OnQuestStart;
-        public UnityEvent<int> OnQuestCompleted;
+        public static Action<int> OnQuestCompleted;
         public static UnityEvent OnQuestCountChanged = new UnityEvent();
-
         private readonly Database database = Database.Instance();
+
+        public int CurrentQuestIndex { get; protected set; }
+
+        private static QuestManager instance = null;
 
 
         private void Start()
         {
+            if (instance == null)
+                instance = this;
+          //  DontDestroyOnLoad(gameObject);
             Quests = new List<Quest>();
             GetNewQuest();
+
+            OnQuestCompleted = (index) =>
+            {
+//                Quests[index].IsCompleted = true;
+                RemoveQuest(index);
+            };
+
+        }
+
+        private void Awake()
+        {
+            //Quests = new List<Quest>();
+           // GetNewQuest();
         }
 
         private void GetNewQuest()
@@ -40,12 +60,15 @@ namespace UrfuProject
             OnQuestCountChanged?.Invoke();
         }
 
-        public void StartQuest(int index)
+       /* public void StartQuest(int index)
         {
-            if (Quests.Count >= index)
+            //Debug.Log($"Scene index { Quests[index].SceneIndex}");
+            if (Quests.Count > index)
                 throw new IndexOutOfRangeException();
-            OnQuestStart?.Invoke(Quests[index]);
-        }
+            CurrentQuestIndex = index;
+            SceneManager.LoadScene(index);
+            //OnQuestStart?.Invoke(Quests[index]);
+        }*/
 
         public void RemoveQuest(int index)
         {
@@ -59,6 +82,19 @@ namespace UrfuProject
         {
             if (Quests.Count >= index)
                 throw new IndexOutOfRangeException();
+
+            GameStatistic.Money += Quests[index].Reward;
+            GameStatistic.AddQuestPoint(Quests[index].Type);
+            GameStatistic.OnStatsChanged?.Invoke();
+            RemoveQuest(index);
+            OnQuestCompleted?.Invoke(index);
+        }
+
+       public void QuestCompleted()
+        {
+
+            Debug.Log($"Current index - {CurrentQuestIndex}");
+            var index = CurrentQuestIndex;
 
             GameStatistic.Money += Quests[index].Reward;
             GameStatistic.AddQuestPoint(Quests[index].Type);

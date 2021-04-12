@@ -2,9 +2,9 @@
 
 public class DragObject : MonoBehaviour
 {
+    public float maxZOffset = -1.8f;
     private Vector3 offset;
     private float zCoord;
-    public RaycastHit2D Raycast { get; private set; }
 
     void OnMouseDown()
     {
@@ -14,6 +14,7 @@ public class DragObject : MonoBehaviour
 
     private Vector3 GetMouseAsWorldPoint()
     {
+
         Vector3 mousePoint = Input.mousePosition;
         mousePoint.z = zCoord;
         return Camera.main.ScreenToWorldPoint(mousePoint);
@@ -21,6 +22,12 @@ public class DragObject : MonoBehaviour
 
     void OnMouseDrag()
     {
+
         transform.position = GetMouseAsWorldPoint() + offset;
+        if (transform.position.z > maxZOffset)
+        {
+            var position = transform.position;
+            transform.position = new Vector3(position.x, position.y, maxZOffset);
+        }
     }
 }
