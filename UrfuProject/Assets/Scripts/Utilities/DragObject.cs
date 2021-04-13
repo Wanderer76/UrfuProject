@@ -3,6 +3,7 @@
 public class DragObject : MonoBehaviour
 {
     public float maxZOffset = -1.8f;
+    public float minZOffset = -1.8f;
     private Vector3 offset;
     private float zCoord;
 
@@ -24,7 +25,12 @@ public class DragObject : MonoBehaviour
     {
 
         transform.position = GetMouseAsWorldPoint() + offset;
-        if (transform.position.z > maxZOffset)
+        if (transform.position.z > minZOffset)
+        {
+            var position = transform.position;
+            transform.position = new Vector3(position.x, position.y, minZOffset);
+        }
+        else if(transform.position.z < maxZOffset)
         {
             var position = transform.position;
             transform.position = new Vector3(position.x, position.y, maxZOffset);
