@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &200278415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,7 +511,7 @@ PrefabInstance:
     - target: {fileID: 4083501151425157549, guid: 125ea3246823869499d738c9b3909d24,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.62
+      value: 0.49
       objectReference: {fileID: 0}
     - target: {fileID: 4083501151425157549, guid: 125ea3246823869499d738c9b3909d24,
         type: 3}
@@ -635,7 +635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &806453130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,7 +760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &826151818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,19 +998,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!65 &1045398778
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045398772}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.022, y: 0.02, z: 0.003}
-  m_Center: {x: -0.001367288, y: -0.0000000058207656, z: -0.0073816045}
 --- !u!64 &1045398779
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1032,13 +1019,13 @@ SpringJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045398772}
-  m_ConnectedBody: {fileID: 602299826}
-  m_Anchor: {x: 0, y: 0.0077714906, z: 0}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0.006}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.019000001, y: 0, z: -0.016771492}
+  m_ConnectedAnchor: {x: -4.5, y: 3.97, z: -2.22}
   serializedVersion: 2
   m_Spring: 65
-  m_Damper: 0.2
+  m_Damper: 18
   m_MinDistance: 0
   m_MaxDistance: 0
   m_Tolerance: 0.025
@@ -1243,7 +1230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1265181916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,7 +1408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1654518228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1546,7 +1533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1672395558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,19 +1677,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!65 &1986236525
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1986236519}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.022, y: 0.02, z: 0.003}
-  m_Center: {x: -0.0013672935, y: -0.0000000058207656, z: -0.0073816045}
 --- !u!64 &1986236526
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1724,13 +1698,13 @@ SpringJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986236519}
-  m_ConnectedBody: {fileID: 602299826}
-  m_Anchor: {x: 0, y: 0.0077714906, z: 0}
+  m_ConnectedBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0, z: 0.006}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.019, y: 0, z: -0.016771492}
+  m_ConnectedAnchor: {x: -0.6999999, y: 3.97, z: -2.22}
   serializedVersion: 2
   m_Spring: 65
-  m_Damper: 0.2
+  m_Damper: 18
   m_MinDistance: 0
   m_MaxDistance: 0
   m_Tolerance: 0.025
