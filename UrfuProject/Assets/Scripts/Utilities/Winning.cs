@@ -8,6 +8,12 @@ namespace UrfuProject
 
         QuestManager manager;
         LevelManager levelManager;
+        int CurrentQuest;
+
+        public void Start()
+        {
+            CurrentQuest = PlayerPrefs.GetInt("CurrentQuestIndex", 0);
+        }
 
         public void Exit()
         {
@@ -20,7 +26,8 @@ namespace UrfuProject
         {
             //TODO Save
             //manager.QuestCompleted();
-            QuestManager.OnQuestCompleted.Invoke(0);
+            PlayerPrefs.SetInt("CompletedQuest", CurrentQuest);
+            //QuestManager.OnQuestCompleted.Invoke(0);
             LevelManager.OnQuestCompleted();
         }
     }

@@ -7,14 +7,14 @@ namespace UrfuProject
     {
 
         public GameObject winPanel;
-        public GameObject actionElements;
+        //public GameObject actionElements;
         public List<GameObject> boxes;
 
         private List<GameObject> boxColliders;
 
         private List<GameObject> positions;
 
-        public BoxCollider2D platform;
+        public BoxCollider platform;
 
         private void Awake()
         {
@@ -22,7 +22,7 @@ namespace UrfuProject
 
             foreach (var i in boxes)
             {
-                i.GetComponent<Rigidbody2D>().mass = Random.Range(2, 10);
+                i.GetComponent<Rigidbody>().mass = Random.Range(2, 10);
             }
 
             boxColliders = boxes;
@@ -43,13 +43,13 @@ namespace UrfuProject
         {
             ls.Sort((first, second) =>
             {
-                var firstMass = first.GetComponent<Rigidbody2D>().mass;
-                var secondMass = second.GetComponent<Rigidbody2D>().mass;
+                var firstMass = first.GetComponent<Rigidbody>().mass;
+                var secondMass = second.GetComponent<Rigidbody>().mass;
                 return firstMass > secondMass ? -1 : 1;
             });
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter(Collider collision)
         {
             foreach (var i in boxColliders)
             {
@@ -63,7 +63,7 @@ namespace UrfuProject
             CheckForWinning();
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        private void OnTriggerExit(Collider collision)
         {
             foreach (var i in boxColliders)
             {
@@ -75,6 +75,9 @@ namespace UrfuProject
             }
             SortXCoordinates(positions);
         }
+
+        
+
 
         private void CheckForWinning()
         {
@@ -99,7 +102,7 @@ namespace UrfuProject
             {
                 Debug.Log("Yes");
                 winPanel.SetActive(true);
-                actionElements.SetActive(false);
+                //actionElements.SetActive(false);
             }
         }
     }

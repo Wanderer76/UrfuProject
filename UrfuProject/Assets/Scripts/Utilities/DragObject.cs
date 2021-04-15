@@ -25,14 +25,13 @@ public class DragObject : MonoBehaviour
     {
 
         transform.position = GetMouseAsWorldPoint() + offset;
+        var position = transform.position;
         if (transform.position.z > minZOffset)
         {
-            var position = transform.position;
             transform.position = new Vector3(position.x, position.y, minZOffset);
         }
         else if(transform.position.z < maxZOffset)
         {
-            var position = transform.position;
             transform.position = new Vector3(position.x, position.y, maxZOffset);
         }
     }
