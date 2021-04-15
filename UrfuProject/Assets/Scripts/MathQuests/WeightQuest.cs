@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace UrfuProject
 {
@@ -7,25 +8,20 @@ namespace UrfuProject
     {
 
         public GameObject winPanel;
-        //public GameObject actionElements;
         public List<GameObject> boxes;
 
-        private List<GameObject> boxColliders;
-
-        private List<GameObject> positions;
-
+        private List<GameObject> boxesPositions;
         public BoxCollider platform;
 
         private void Awake()
         {
-            positions = new List<GameObject>();
+            boxesPositions = new List<GameObject>();
 
             foreach (var i in boxes)
             {
                 i.GetComponent<Rigidbody>().mass = Random.Range(2, 10);
             }
 
-            boxColliders = boxes;
             SortMasses(boxes);
         }
 
@@ -51,29 +47,27 @@ namespace UrfuProject
 
         private void OnTriggerEnter(Collider collision)
         {
-            foreach (var i in boxColliders)
+            foreach (var i in boxes.Where(i => collision.gameObject == i))
             {
-                if (collision.gameObject == i)
-                {
-                    Debug.Log("Trigger enter");
-                    positions.Add(i);
-                }
+                Debug.Log("Trigger enter");
+                boxesPositions.Add(i);
             }
-            SortXCoordinates(positions);
+
+            SortXCoordinates(boxesPositions);
             CheckForWinning();
         }
 
         private void OnTriggerExit(Collider collision)
         {
-            foreach (var i in boxColliders)
+            foreach (var i in boxes)
             {
                 if (collision.gameObject == i)
                 {
                     Debug.Log("Trigger exit");
-                    positions.Remove(i);
+                    boxesPositions.Remove(i);
                 }
             }
-            SortXCoordinates(positions);
+            SortXCoordinates(boxesPositions);
         }
 
         
@@ -81,12 +75,12 @@ namespace UrfuProject
 
         private void CheckForWinning()
         {
-            if (positions.Count != boxes.Count)
+            if (boxesPositions.Count != boxes.Count)
                 return;
 
             bool isEqual = true;
             var index = 0;
-            foreach (var i in positions)
+            foreach (var i in boxesPositions)
             {
                 if (i != boxes[index])
                 {
