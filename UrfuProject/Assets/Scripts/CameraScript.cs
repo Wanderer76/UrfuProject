@@ -10,11 +10,10 @@ namespace UrfuProject
 
         public GameObject parent;
 
-        public float _rotationSpeedHor = 5.0f;
-        public float _rotationSpeedVer = 5.0f;
-
-        public float maxVert = 45.0f;
-        public float minVert = -45.0f;
+        private const float _rotationSpeedHor = 5.0f;
+        private const float _rotationSpeedVer = 5.0f;
+        private const float maxVert = 45.0f;
+        private const float minVert = -45.0f;
         private float _rotationX = 0;
 
 
@@ -28,6 +27,7 @@ namespace UrfuProject
             float _rotationY = transform.localEulerAngles.y + delta;
 
             transform.localEulerAngles = new Vector3(_rotationX, _rotationY, 0);
+        
         }
     }
 }

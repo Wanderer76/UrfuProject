@@ -19,7 +19,12 @@ namespace UrfuProject
         // Update is called once per frame
         void Update()
         {
-            //var forward = transform.TransformDirection(Vector3.forward);
+            MakeMove();
+        }
+
+        private void MakeMove()
+        {
+            transform.Rotate(0, Input.GetAxis("Mouse X"), 0);
             var verticalSpeed = Input.GetAxis("Vertical");
             var horizontalSpeed = Input.GetAxis("Horizontal");
             var movement = new Vector3(horizontalSpeed, 0, verticalSpeed);
