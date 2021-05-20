@@ -24,13 +24,13 @@ namespace UrfuProject
         {
             if (instance == null)
                 instance = this;
-          //  DontDestroyOnLoad(gameObject);
+            //  DontDestroyOnLoad(gameObject);
             Quests = new List<Quest>();
             GetNewQuest();
 
             OnQuestCompleted = (index) =>
             {
-//                Quests[index].IsCompleted = true;
+                //Quests[index].IsCompleted = true;
                 RemoveQuest(index);
             };
 
@@ -39,20 +39,20 @@ namespace UrfuProject
         private void Awake()
         {
             //Quests = new List<Quest>();
-           // GetNewQuest();
+            // GetNewQuest();
         }
 
         private void GetNewQuest()
         {
             //TODO Здесь квесты должны будут получатся из базы данных
             AddQuest("Матан", "Взвесить", QuestLevel.First, 230, QuestType.Unique, ScienceType.Math);
-            AddQuest("Матан", "Что то", QuestLevel.Second, 230, QuestType.Unique, ScienceType.Math);
+            AddQuest("Физика", "Найти оптимальную массу", QuestLevel.Second, 230, QuestType.Unique, ScienceType.Math);
         }
 
 
-        public void AddQuest(string title,string description, QuestLevel level,int reward, QuestType type, ScienceType science)
+        public void AddQuest(string title, string description, QuestLevel level, int reward, QuestType type, ScienceType science)
         {
-            if(title == string.Empty || description == string.Empty)
+            if (title == string.Empty || description == string.Empty)
                 throw new ArgumentException();
 
             var quest = new Quest(title, description, reward, type, level, science);
@@ -60,15 +60,15 @@ namespace UrfuProject
             OnQuestCountChanged?.Invoke();
         }
 
-       /* public void StartQuest(int index)
-        {
-            //Debug.Log($"Scene index { Quests[index].SceneIndex}");
-            if (Quests.Count > index)
-                throw new IndexOutOfRangeException();
-            CurrentQuestIndex = index;
-            SceneManager.LoadScene(index);
-            //OnQuestStart?.Invoke(Quests[index]);
-        }*/
+        /* public void StartQuest(int index)
+         {
+             //Debug.Log($"Scene index { Quests[index].SceneIndex}");
+             if (Quests.Count > index)
+                 throw new IndexOutOfRangeException();
+             CurrentQuestIndex = index;
+             SceneManager.LoadScene(index);
+             //OnQuestStart?.Invoke(Quests[index]);
+         }*/
 
         public void RemoveQuest(int index)
         {
@@ -90,7 +90,7 @@ namespace UrfuProject
             OnQuestCompleted?.Invoke(index);
         }
 
-       public void QuestCompleted()
+        public void QuestCompleted()
         {
 
             Debug.Log($"Current index - {CurrentQuestIndex}");

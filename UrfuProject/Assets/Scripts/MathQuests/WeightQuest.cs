@@ -11,7 +11,7 @@ namespace UrfuProject
         public List<GameObject> boxes;
 
         private List<GameObject> boxesPositions;
-        public BoxCollider platform;
+        public Collider platform;
 
         private void Awake()
         {
