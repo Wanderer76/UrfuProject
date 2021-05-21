@@ -9,25 +9,47 @@ namespace UrfuProject
 
 
         public GameObject parent;
+ 
+        public float sensitive = 100;
+        private float xRotation = 0;
 
-        private const float _rotationSpeedHor = 5.0f;
-        private const float _rotationSpeedVer = 5.0f;
-        private const float maxVert = 45.0f;
-        private const float minVert = -45.0f;
-        private float _rotationX = 0;
+        private void Start()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
 
         private void Update()
         {
+          
+            var mouseX = Input.GetAxis("Mouse X") * sensitive * Time.deltaTime;
+            var mouseY = Input.GetAxis("Mouse Y") * sensitive * Time.deltaTime;
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90, 90);
+            transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+            parent.transform.Rotate(Vector3.up * mouseX);
 
-            _rotationX -= Input.GetAxis("Mouse Y") * _rotationSpeedVer;
-            _rotationX = Mathf.Clamp(_rotationX, minVert, maxVert);
 
-            float delta = Input.GetAxis("Mouse X") * _rotationSpeedHor;
-            float _rotationY = transform.localEulerAngles.y + delta;
+        }
+        private void FixedUpdate()
+        {
+            /* RaycastHit hit;
 
-            transform.localEulerAngles = new Vector3(_rotationX, _rotationY, 0);
-        
+             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+             {
+                 if (hit.collider.GetComponent<DragObject>())
+                 {
+
+                         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                         Debug.Log("Did Hit");
+
+                 }
+             }
+             else
+             {
+                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.red);
+                 Debug.Log("Did not Hit");
+             }*/
         }
     }
 }

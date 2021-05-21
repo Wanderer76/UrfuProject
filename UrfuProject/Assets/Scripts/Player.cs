@@ -10,25 +10,25 @@ namespace UrfuProject
         public float speed = 2;
         private CharacterController characterController;
 
-        // Start is called before the first frame update
-        void Start()
+       
+        private void Start()
         {
             characterController = GetComponent<CharacterController>();
         }
 
-        // Update is called once per frame
-        void Update()
+
+        private void Update()
         {
             MakeMove();
         }
 
         private void MakeMove()
         {
-            transform.Rotate(0, Input.GetAxis("Mouse X"), 0);
-            var verticalSpeed = Input.GetAxis("Vertical");
-            var horizontalSpeed = Input.GetAxis("Horizontal");
-            var movement = new Vector3(horizontalSpeed, 0, verticalSpeed);
-            characterController.SimpleMove(speed * movement);
+            var x = Input.GetAxis("Horizontal");
+            var z= Input.GetAxis("Vertical");
+            var movement = transform.right * x + transform.forward * z;
+            characterController.Move(speed * movement * Time.deltaTime);
+           
         }
     }
 }
