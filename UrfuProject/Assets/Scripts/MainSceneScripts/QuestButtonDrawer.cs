@@ -13,7 +13,6 @@ namespace UrfuProject
 
         public void CreateButtons()
         {
-
             var quests = questManager.Quests;
 
             for (var i = 0; i < quests.Count; i++)
@@ -39,7 +38,6 @@ namespace UrfuProject
         {
             CreateButtons();
         }
-
 
         private void OnDisable()
         {

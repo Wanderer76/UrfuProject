@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 namespace UrfuProject
 {
@@ -26,22 +25,20 @@ namespace UrfuProject
                 instance = this;
 
             Quests = new List<Quest>();
-            GetNewQuest();
+            GetNewQuests();
 
             OnQuestCompleted = (index) =>
             {
                 //Quests[index].IsCompleted = true;
                 RemoveQuest(index);
             };
-
         }
 
-        private void GetNewQuest()
+        private void GetNewQuests()
         {
             foreach (var quest in database.GetAllQuest())
                 AddQuest(quest);
         }
-
 
         public void AddQuest(string title, string description, int reward, QuestType type, QuestLevel level, ScienceType science)
         {
@@ -52,10 +49,12 @@ namespace UrfuProject
             Quests.Add(quest);
             OnQuestCountChanged?.Invoke();
         }
+
         public void AddQuest(Quest quest)
         {
             AddQuest(quest.Title, quest.MainText, quest.Reward, quest.Type, quest.Level, quest.ScienceType);
         }
+
         public void RemoveQuest(int index)
         {
             if (index >= Quests.Count)

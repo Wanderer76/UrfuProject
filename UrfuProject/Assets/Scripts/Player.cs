@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 namespace UrfuProject
 {
@@ -10,12 +7,10 @@ namespace UrfuProject
         public float speed = 2;
         private CharacterController characterController;
 
-       
         private void Start()
         {
             characterController = GetComponent<CharacterController>();
         }
-
 
         private void Update()
         {
@@ -25,10 +20,9 @@ namespace UrfuProject
         private void MakeMove()
         {
             var x = Input.GetAxis("Horizontal");
-            var z= Input.GetAxis("Vertical");
+            var z = Input.GetAxis("Vertical");
             var movement = transform.right * x + transform.forward * z;
             characterController.Move(speed * movement * Time.deltaTime);
-           
         }
     }
 }

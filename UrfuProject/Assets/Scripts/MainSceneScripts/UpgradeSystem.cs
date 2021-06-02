@@ -4,18 +4,17 @@ using UnityEngine.UI;
 
 namespace UrfuProject
 {
-
     public class UpgradeSystem : MonoBehaviour
     {
 
-        private Dictionary<string, int> upgradeText = new Dictionary<string, int>{
+        private Dictionary<string, int> upgradeText = new Dictionary<string, int>
+        {
+                {"Математика", 100} ,
+                {"Физика", 120},
+                { "Биология", 200},
+                { "Химмия" , 220},
+        };
 
-       { "Математика", 100 } ,
-       {"Физика" ,120},
-       {"Биология",200 },
-       {"Химмия" ,220},
-    };
-       
 
         [SerializeField]
         private Button[] upgradeButtons;

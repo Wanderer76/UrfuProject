@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Arm : MonoBehaviour
 {
     public GameObject player;
-    public float interactDistance = 2f;
+    public Image armIndicator;
     public Transform arm;
-    public KeyCode key = KeyCode.E;
-    private float distance;
-
     private Rigidbody rigidbody;
+
+    public KeyCode takeObjectKey = KeyCode.E;
+    public float interactDistance = 2f;
+    private float distanceToPlayer;
+
 
     private void Start()
     {
@@ -20,11 +21,13 @@ public class Arm : MonoBehaviour
 
     private void OnMouseOver()
     {
-        distance = Vector3.Distance(player.GetComponent<Transform>().position, transform.position);
-
-        if (distance < interactDistance)
+        distanceToPlayer = Vector3.Distance(player.GetComponent<Transform>().position, transform.position);
+        if (distanceToPlayer < interactDistance)
         {
-            if (Input.GetKeyDown(key))
+            if (transform.parent == null)
+                armIndicator.enabled = true;
+
+            if (Input.GetKeyDown(takeObjectKey))
             {
                 transform.position = arm.position;
                 transform.rotation = arm.rotation;
@@ -32,11 +35,13 @@ public class Arm : MonoBehaviour
                 rigidbody.isKinematic = true;
             }
         }
+        else
+            armIndicator.enabled = false;
     }
 
     private void OnMouseExit()
     {
-
+        armIndicator.enabled = false;
     }
 
     private void Update()

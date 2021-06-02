@@ -6,7 +6,6 @@ namespace UrfuProject
 {
     public class WeightQuest : MonoBehaviour
     {
-
         public GameObject winPanel;
         public List<GameObject> boxes;
 
@@ -69,9 +68,6 @@ namespace UrfuProject
             }
             SortXCoordinates(boxesPositions);
         }
-
-        
-
 
         private void CheckForWinning()
         {

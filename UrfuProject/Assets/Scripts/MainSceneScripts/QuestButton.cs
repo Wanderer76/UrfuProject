@@ -8,16 +8,13 @@ namespace UrfuProject
 {
     public class QuestButton : MonoBehaviour
     {
-
         public Text ButtonText { get; set; }
-
         public int SceneIndex { get; set; }
-
         public int Index { get; set; }
+        public Button Button { get; set; }
 
         public UnityEvent<int> OnDelete;
 
-        public Button Button { get; set; }
 
         public QuestButton(string text, int scene, int index)
         {
@@ -31,7 +28,6 @@ namespace UrfuProject
 
         public void OnMouseDown()
         {
-            //Destroy();
             SceneManager.LoadScene(SceneIndex);
         }
 
