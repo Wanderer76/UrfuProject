@@ -24,7 +24,7 @@ namespace UrfuProject
         {
             if (instance == null)
                 instance = this;
-            //  DontDestroyOnLoad(gameObject);
+
             Quests = new List<Quest>();
             GetNewQuest();
 
@@ -36,21 +36,14 @@ namespace UrfuProject
 
         }
 
-        private void Awake()
-        {
-            //Quests = new List<Quest>();
-            // GetNewQuest();
-        }
-
         private void GetNewQuest()
         {
-            //TODO Здесь квесты должны будут получатся из базы данных
-            AddQuest("Матан", "Взвесить", QuestLevel.First, 230, QuestType.Unique, ScienceType.Math);
-            AddQuest("Физика", "Найти оптимальную массу", QuestLevel.Second, 230, QuestType.Unique, ScienceType.Math);
+            foreach (var quest in database.GetAllQuest())
+                AddQuest(quest);
         }
 
 
-        public void AddQuest(string title, string description, QuestLevel level, int reward, QuestType type, ScienceType science)
+        public void AddQuest(string title, string description, int reward, QuestType type, QuestLevel level, ScienceType science)
         {
             if (title == string.Empty || description == string.Empty)
                 throw new ArgumentException();
@@ -59,17 +52,10 @@ namespace UrfuProject
             Quests.Add(quest);
             OnQuestCountChanged?.Invoke();
         }
-
-        /* public void StartQuest(int index)
-         {
-             //Debug.Log($"Scene index { Quests[index].SceneIndex}");
-             if (Quests.Count > index)
-                 throw new IndexOutOfRangeException();
-             CurrentQuestIndex = index;
-             SceneManager.LoadScene(index);
-             //OnQuestStart?.Invoke(Quests[index]);
-         }*/
-
+        public void AddQuest(Quest quest)
+        {
+            AddQuest(quest.Title, quest.MainText, quest.Reward, quest.Type, quest.Level, quest.ScienceType);
+        }
         public void RemoveQuest(int index)
         {
             if (index >= Quests.Count)
