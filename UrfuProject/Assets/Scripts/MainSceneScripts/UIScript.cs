@@ -12,25 +12,29 @@ namespace UrfuProject
 
         public GameObject exitPanel;
         public GameObject questsPanel;
-        private GameObject actionElement;
-
-        public GameObject notificationImage;
-
         public Text sciencePointsText;
         public Text moneyText;
 
         private void Awake()
         {
-            actionElement = GameObject.Find("ActionsElement");
             UpdateStatisticUI();
         }
         private void Start()
         {
             GameStatistic.OnStatsChanged.AddListener(UpdateStatisticUI);
-            QuestManager.OnQuestCountChanged.AddListener(() => {
-                notificationImage.SetActive(true);
+            QuestManager.OnQuestCountChanged.AddListener(() =>
+            {
             });
         }
+
+        private void FixedUpdate()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ShowExitPanel();
+            }
+        }
+
         private void UpdateStatisticUI()
         {
             sciencePointsText.text = $"{ScienceText}:{GameStatistic.SciencePoints}";
@@ -44,7 +48,7 @@ namespace UrfuProject
 
         public void Continue()
         {
-           DeactivatePanel(exitPanel);
+            DeactivatePanel(exitPanel);
         }
 
         public void LoadMainMenu()
@@ -54,7 +58,6 @@ namespace UrfuProject
 
         public void ShowQuestsTable()
         {
-            notificationImage.SetActive(false);
             ActivatePanel(questsPanel);
         }
         public void HideQuestsTable()
@@ -70,14 +73,19 @@ namespace UrfuProject
         private void ActivatePanel(GameObject showed)
         {
             showed.SetActive(true);
-            actionElement.SetActive(false);
         }
         private void DeactivatePanel(GameObject showed)
         {
+            Time.timeScale = 1;
             showed.SetActive(false);
-            actionElement.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
-
+        private void ShowExitPanel()
+        {
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            exitPanel.SetActive(true);
+        }
     }
 }

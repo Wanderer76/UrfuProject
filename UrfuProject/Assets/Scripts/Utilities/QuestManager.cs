@@ -10,13 +10,31 @@ namespace UrfuProject
         public List<Quest> Quests { get; private set; }
 
         public UnityEvent<Quest> OnQuestStart;
-        public static Action<int> OnQuestCompleted;
+        public Action<int> OnQuestCompleted;
         public static UnityEvent OnQuestCountChanged = new UnityEvent();
         private readonly Database database = Database.Instance();
 
-        public int CurrentQuestIndex { get; protected set; }
+        public int CurrentQuestIndex { get; private set; }
 
         private static QuestManager instance = null;
+
+        //public static QuestManager Instance()
+        //{
+        //    if (instance == null)
+        //    {
+        //        instance = new QuestManager();
+        //
+        //        Quests = new List<Quest>();
+        //        GetNewQuests();
+        //
+        //        OnQuestCompleted = (index) =>
+        //        {
+        //            //Quests[index].IsCompleted = true;
+        //            RemoveQuest(index);
+        //        };
+        //    }
+        //    return instance;
+        //}
 
 
         private void Start()
@@ -29,12 +47,12 @@ namespace UrfuProject
 
             OnQuestCompleted = (index) =>
             {
-                //Quests[index].IsCompleted = true;
-                RemoveQuest(index);
+               //Quests[index].IsCompleted = true;
+               RemoveQuest(index);
             };
         }
 
-        private void GetNewQuests()
+        public void GetNewQuests()
         {
             foreach (var quest in database.GetAllQuest())
                 AddQuest(quest);

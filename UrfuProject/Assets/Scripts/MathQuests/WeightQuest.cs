@@ -16,10 +16,10 @@ namespace UrfuProject
         {
             boxesPositions = new List<GameObject>();
 
-            foreach (var i in boxes)
-            {
-                i.GetComponent<Rigidbody>().mass = Random.Range(2, 10);
-            }
+            // foreach (var i in boxes)
+            // {
+            //     i.GetComponent<Rigidbody>().mass = Random.Range(2, 10);
+            // }
 
             SortMasses(boxes);
         }
@@ -40,7 +40,7 @@ namespace UrfuProject
             {
                 var firstMass = first.GetComponent<Rigidbody>().mass;
                 var secondMass = second.GetComponent<Rigidbody>().mass;
-                return firstMass > secondMass ? -1 : 1;
+                return firstMass > secondMass ? 1 : -1;
             });
         }
 
@@ -51,7 +51,6 @@ namespace UrfuProject
                 Debug.Log("Trigger enter");
                 boxesPositions.Add(i);
             }
-
             SortXCoordinates(boxesPositions);
             CheckForWinning();
         }
@@ -75,15 +74,14 @@ namespace UrfuProject
                 return;
 
             bool isEqual = true;
-            var index = 0;
-            foreach (var i in boxesPositions)
+
+            for (var i = 0; i < boxes.Count; i++)
             {
-                if (i != boxes[index])
+                if (boxesPositions[i] != boxes[i])
                 {
                     isEqual = false;
                     break;
                 }
-                index++;
             }
 
             if (!isEqual)
@@ -91,8 +89,8 @@ namespace UrfuProject
             else
             {
                 Debug.Log("Yes");
+                Debug.Log("Winn");
                 winPanel.SetActive(true);
-                //actionElements.SetActive(false);
             }
         }
     }

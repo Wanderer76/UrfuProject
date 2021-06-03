@@ -17,7 +17,7 @@ namespace UrfuProject
         public static Database Instance()
         {
             if (instance == null)
-                instance = new Database();
+                instance = new Database(); 
             return instance;
         }
 

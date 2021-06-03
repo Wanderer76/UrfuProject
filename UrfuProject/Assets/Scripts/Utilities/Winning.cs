@@ -6,7 +6,6 @@ namespace UrfuProject
     public class Winning : MonoBehaviour
     {
 
-        QuestManager manager;
         LevelManager levelManager;
         int CurrentQuest;
 

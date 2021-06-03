@@ -6,14 +6,16 @@ namespace UrfuProject
     public enum QuestType
     {
         Unique,
-        Regular
+        Regular,
+        None
     }
     public enum QuestLevel
     {
         First,
         Second,
         Third,
-        Fourth
+        Fourth,
+        None
     }
 
     public enum ScienceType
@@ -21,7 +23,8 @@ namespace UrfuProject
         Math,
         Physics,
         Chemestry,
-        Biology
+        Biology,
+        None
     }
 
     public struct Quest
@@ -78,5 +81,7 @@ namespace UrfuProject
             }
         }
 
+        public static Quest EmptyQuest() =>
+             new Quest(null, null, -1, QuestType.None, QuestLevel.None, ScienceType.None);
     }
 }

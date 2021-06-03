@@ -6,18 +6,17 @@ public class Arm : MonoBehaviour
     public GameObject player;
     public Image armIndicator;
     public Transform arm;
-    private Rigidbody rigidbody;
 
     public KeyCode takeObjectKey = KeyCode.E;
     public float interactDistance = 2f;
     private float distanceToPlayer;
+    private new Rigidbody rigidbody;
 
 
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
     }
-
 
     private void OnMouseOver()
     {
@@ -52,5 +51,4 @@ public class Arm : MonoBehaviour
             transform.parent = null;
         }
     }
-
 }

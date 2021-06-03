@@ -196,7 +196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 8456510610545810080, guid: d2ecada469072f04fadc5e6f8f83453f,
     type: 3}
-  parents: {fileID: 21400708}
   questManager: {fileID: 433904730}
 --- !u!1 &70090780
 GameObject:
@@ -1457,7 +1456,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitPanel: {fileID: 914234609}
   questsPanel: {fileID: 1932453325}
-  notificationImage: {fileID: 1742732170}
   sciencePointsText: {fileID: 1312670188}
   moneyText: {fileID: 212535245}
 --- !u!114 &433904730
