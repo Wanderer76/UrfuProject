@@ -4,17 +4,19 @@ using System.Linq;
 
 namespace UrfuProject
 {
-    public class WeightQuest : MonoBehaviour
+    public class WeightQuestController : MonoBehaviour
     {
         public GameObject winPanel;
         public List<GameObject> boxes;
-
+        //public GameObject prefab;
         private List<GameObject> boxesPositions;
         public Collider platform;
 
-        private void Awake()
+
+        private void Start()
         {
             boxesPositions = new List<GameObject>();
+            //MathScroll.OnStartEvent += ((type) => { Debug.Log("EVENT"); if (type == QuestType.Weights) StartQuest(); });
 
             // foreach (var i in boxes)
             // {
@@ -88,10 +90,15 @@ namespace UrfuProject
                 Debug.Log("No");
             else
             {
-                Debug.Log("Yes");
                 Debug.Log("Winn");
                 winPanel.SetActive(true);
             }
+        }
+
+        public void StartQuest()
+        {
+            Debug.Log("Yes");
+            //prefab.SetActive(true);
         }
     }
 }

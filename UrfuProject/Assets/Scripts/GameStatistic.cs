@@ -47,14 +47,14 @@ namespace UrfuProject
                     break;
             }
         }
-        public static void AddQuestPoint(QuestType type)
+        public static void AddQuestPoint(QuestLevel type)
         {
             switch (type)
             {
-                case QuestType.Unique:
+                case QuestLevel.First:
                     SciencePoints += 129;
                     break;
-                case QuestType.Regular:
+                case QuestLevel.Second:
                     SciencePoints += 50;
                     break;
             }

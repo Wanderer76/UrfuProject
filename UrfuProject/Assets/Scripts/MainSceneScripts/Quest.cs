@@ -1,87 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace UrfuProject
 {
-    public enum QuestType
+    public class Quest
     {
-        Unique,
-        Regular,
-        None
-    }
-    public enum QuestLevel
-    {
-        First,
-        Second,
-        Third,
-        Fourth,
-        None
-    }
+        public string Title { get; }
+        public string MainText { get; }
+        public string SceneName { get; }
+        public int Reward { get; }
+        public bool IsCompleted { get; }
+        public QuestLevel Level { get; }
+        public ScienceType ScienceType { get; }
+        public QuestType Type { get; }
 
-    public enum ScienceType
-    {
-        Math,
-        Physics,
-        Chemestry,
-        Biology,
-        None
-    }
-
-    public struct Quest
-    {
-        public string Title { get; private set; }
-
-        public string MainText { get; private set; }
-
-        public int SceneIndex { get; private set; }
-
-        public int Reward { get; private set; }
-
-        public bool IsCompleted { get; set; }
-
-        public QuestLevel Level { get; private set; }
-
-        public QuestType Type { get; private set; }
-
-        public ScienceType ScienceType { get; private set; }
-
-        public Quest(string title, string mainText, int reward, QuestType type, QuestLevel level, ScienceType science)
+        public Quest(string title, string mainText, int reward, QuestLevel level, ScienceType science, QuestType type)
         {
             Title = title;
             MainText = mainText;
             Level = level;
             Reward = reward;
-            Type = type;
             IsCompleted = false;
-            this.ScienceType = science;
-            SceneIndex = 2;
-            if (type == QuestType.Unique)
-            {
-                switch (science)
-                {
-                    case ScienceType.Math:
-                        if (level == QuestLevel.First)
-                            SceneIndex = 2;
-                        break;
-                    case ScienceType.Physics:
-                        if (level == QuestLevel.Second)
-                            SceneIndex = 3;
-                        break;
-                    case ScienceType.Chemestry:
-                        SceneIndex = 2;
-                        break;
-                    case ScienceType.Biology:
-                        SceneIndex = 2;
-                        break;
-                }
-            }
-            else
-            {
-                SceneIndex = 0;
-            }
-        }
+            ScienceType = science;
+            SceneName = "MainScene";
 
-        public static Quest EmptyQuest() =>
-             new Quest(null, null, -1, QuestType.None, QuestLevel.None, ScienceType.None);
+            switch (science)
+            {
+                case ScienceType.Math:
+                    if (level == QuestLevel.First)
+                    {
+                        SceneName = Scenes.MainScene;
+                    }
+                    break;
+                case ScienceType.Physics:
+                    if (level == QuestLevel.Second)
+                        SceneName = Scenes.DockScene;
+                    break;
+            }
+
+
+        }
+        //
+        //public static Quest EmptyQuest() =>
+        //     new Quest(null, null, -1,  QuestLevel.None, ScienceType.None);
     }
 }

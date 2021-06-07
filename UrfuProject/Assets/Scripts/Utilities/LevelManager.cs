@@ -7,11 +7,9 @@ namespace UrfuProject
     {
         private static LevelManager instance = null;
 
-        public static int CurrentScene { get; private set; }
 
         private LevelManager()
         {
-            CurrentScene = SceneManager.GetActiveScene().buildIndex;
         }
 
         private void Start()
@@ -27,8 +25,11 @@ namespace UrfuProject
         }
         public void StartQuest(int levelIndex)
         {
-            CurrentScene = levelIndex;
             SceneManager.LoadScene(levelIndex);
+        }
+        public void StartQuest(string levelName)
+        {
+            SceneManager.LoadScene(levelName);
         }
 
         public static void OnQuestCompleted()

@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 0
-    path: Assets/Scenes/MainScene.unity
+    path: Assets/Scenes/MainScene1.unity
     guid: 4e9bb66c69e821f4398514fdf10e0ab7
   - enabled: 1
-    path: Assets/Scenes/MathLevel0Quest.unity
+    path: Assets/Scenes/MainScene.unity
     guid: afdf01f37bda8aa4b837c5afec1d20c4
   - enabled: 1
-    path: Assets/Scenes/PhysicsLevel1Quest.unity
+    path: Assets/Scenes/DockScene.unity
     guid: 5820713eae569634ba91a7ad3ceed5ed
   m_configObjects: {}

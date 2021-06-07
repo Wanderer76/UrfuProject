@@ -17,6 +17,7 @@ namespace UrfuProject
         public void StartGame()
         {
             SceneManager.LoadScene((int)GameStatistic.Scenes.MainScene);
+            QuestManager.GetNewQuests();
         }
 
     }
