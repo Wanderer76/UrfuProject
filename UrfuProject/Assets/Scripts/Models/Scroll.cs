@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace UrfuProject
 {
-    public class MathScroll : MonoBehaviour
+    public class Scroll : MonoBehaviour
     {
         public GameObject[] QuestsPrefabs;
         public Image image;

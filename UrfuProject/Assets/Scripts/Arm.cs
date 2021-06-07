@@ -12,7 +12,6 @@ public class Arm : MonoBehaviour
     private float distanceToPlayer;
     private new Rigidbody rigidbody;
 
-
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();

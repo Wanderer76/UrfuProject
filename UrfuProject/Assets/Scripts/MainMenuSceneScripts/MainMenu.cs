@@ -5,9 +5,6 @@ namespace UrfuProject
 {
     public class MainMenu : MonoBehaviour
     {
-        // Start is called before the first frame update
-       
-
         public void Quit()
         {
             Debug.Log("Выход");

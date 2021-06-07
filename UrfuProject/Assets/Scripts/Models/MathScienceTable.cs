@@ -89,7 +89,7 @@ namespace UrfuProject
         {
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
-            scroll.GetComponent<MathScroll>().SetQuest(availableQuests.First());
+            scroll.GetComponent<Scroll>().SetQuest(availableQuests.First());
             scroll.SetActive(true);
         }
 
