@@ -4,14 +4,14 @@ using System.Linq;
 
 namespace UrfuProject
 {
-    public class WeightQuestController : MonoBehaviour
+    public class WeightQuest : MonoBehaviour
     {
         public GameObject winPanel;
         public List<GameObject> boxes;
-        //public GameObject prefab;
         private List<GameObject> boxesPositions;
         public Collider platform;
 
+        public Quest CurrentQuest;
 
         private void Start()
         {
@@ -91,14 +91,22 @@ namespace UrfuProject
             else
             {
                 Debug.Log("Winn");
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                QuestManager.QuestCompleted(CurrentQuest);
+                winPanel.GetComponent<Winning>().SetQuest(CurrentQuest);
                 winPanel.SetActive(true);
+                foreach(var gold in boxes)
+                {
+                    Destroy(gold);
+                }
+                
             }
         }
 
         public void StartQuest()
         {
             Debug.Log("Yes");
-            //prefab.SetActive(true);
         }
     }
 }

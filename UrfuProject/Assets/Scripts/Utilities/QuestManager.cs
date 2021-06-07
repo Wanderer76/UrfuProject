@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,47 +10,13 @@ namespace UrfuProject
     {
         public static List<Quest> Quests { get; private set; } = new List<Quest>();
         public static UnityEvent<Quest> OnQuestStart;
+
         public static Action<int> OnQuestCompleted;
         public static UnityEvent OnQuestCountChanged = new UnityEvent();
         private static readonly QuestStore database = QuestStore.Instance();
 
         public static int CurrentQuestIndex { get; private set; }
 
-        //private static QuestManager instance = null;
-        //
-        //public static QuestManager Instance()
-        //{
-        //    if (instance == null)
-        //    {
-        //        instance = new QuestManager();
-        //
-        //        Quests = new List<Quest>();
-        //        GetNewQuests();
-        //
-        //        OnQuestCompleted = (index) =>
-        //        {
-        //            //Quests[index].IsCompleted = true;
-        //            RemoveQuest(index);
-        //        };
-        //    }
-        //    return instance;
-        //}
-
-
-        //private void Start()
-        //{
-        //    if (instance == null)
-        //        instance = this;
-        //
-        //    Quests = new List<Quest>();
-        //    GetNewQuests();
-        //
-        //    OnQuestCompleted = (index) =>
-        //    {
-        //       //Quests[index].IsCompleted = true;
-        //       RemoveQuest(index);
-        //    };
-        //}
 
         public static void GetNewQuests()
         {
@@ -59,21 +26,16 @@ namespace UrfuProject
             }
         }
 
-       // public static void AddQuest(string title, string description, int reward, QuestLevel level, ScienceType science)
-       // {
-       //     if (title == string.Empty || description == string.Empty)
-       //         throw new ArgumentException();
-       //
-       //     var quest = new Quest(title, description, reward, level, science);
-       //
-       //     Quests.Add(quest);
-       //     OnQuestCountChanged?.Invoke();
-       // }
-       //
-       // public static void AddQuest(Quest quest)
-       // {
-       //     AddQuest(quest.Title, quest.MainText, quest.Reward, quest.Level, quest.ScienceType);
-       // }
+        public static void QuestCompleted(Quest quest)
+        {
+            Quests.Where(q => q.MainText == quest.MainText && q.Title == quest.Title && q.ScienceType == quest.ScienceType).First().Status = QuestStatus.Completed;
+        }
+        
+        public static void QuestInProgress(Quest quest)
+        {
+            Quests.Where(q => q.MainText == quest.MainText && q.Title == quest.Title && q.ScienceType == quest.ScienceType).First().Status = QuestStatus.InPregress;
+        }
+
 
         public static void RemoveQuest(int index)
         {

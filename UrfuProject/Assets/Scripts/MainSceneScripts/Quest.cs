@@ -1,13 +1,14 @@
 ﻿
 namespace UrfuProject
 {
+
     public class Quest
     {
         public string Title { get; }
         public string MainText { get; }
         public string SceneName { get; }
         public int Reward { get; }
-        public bool IsCompleted { get; }
+        public QuestStatus Status { get; set; }
         public QuestLevel Level { get; }
         public ScienceType ScienceType { get; }
         public QuestType Type { get; }
@@ -18,7 +19,7 @@ namespace UrfuProject
             MainText = mainText;
             Level = level;
             Reward = reward;
-            IsCompleted = false;
+            Status = QuestStatus.None;
             ScienceType = science;
             SceneName = "MainScene";
 

@@ -14,6 +14,8 @@ namespace UrfuProject
         private HashSet<Quest> availableQuests;
         private bool isQuestStart = false;
 
+        public int CurrentQuest { get; private set; }
+
         [Header("Свойства для открытия свитка")]
         public GameObject player;
         public GameObject scroll;
@@ -26,18 +28,34 @@ namespace UrfuProject
         private void Start()
         {
             availableQuests = new HashSet<Quest>();
-            QuestManager.GetNewQuests(); 
+            QuestManager.GetNewQuests();
         }
 
         private void FixedUpdate()
         {
-            foreach (var quest in QuestManager.Quests.Where(q => q.ScienceType == ScienceType.Math))
+            if (!isQuestStart)
             {
-                availableQuests.Add(quest);
+                foreach (var quest in QuestManager.Quests.Where(q => q.ScienceType == ScienceType.Math && q.Status == QuestStatus.None))
+                {
+                    availableQuests.Add(quest);
+                }
             }
+
+            if (availableQuests.Count > 0)
+            {
+                if (availableQuests.First().Status == QuestStatus.Completed)
+                {
+                    var prefab = questsPrefabs.Where(pref => pref.GetComponentInChildren<WeightQuest>() != null).First();
+                    prefab.SetActive(false);
+                    availableQuests.Remove(availableQuests.First());
+                    isQuestStart = false;
+                    Debug.Log("Completed");
+                }
+            }
+
             if (availableQuests.Count > 0 && !isQuestStart)
             {
-               questScroll.SetActive(true);
+                questScroll.SetActive(true);
             }
 
             distanceToPlayer = Vector3.Distance(player.GetComponent<Transform>().position, transform.position);
@@ -102,9 +120,11 @@ namespace UrfuProject
         public void AcceptQuest()
         {
             var quest = availableQuests.First();
-            var prefab = questsPrefabs.Where(pref => pref.GetComponentInChildren<WeightQuestController>() != null).First();
+            var prefab = questsPrefabs.Where(pref => pref.GetComponentInChildren<WeightQuest>() != null).First();
             prefab.SetActive(true);
+            prefab.GetComponentInChildren<WeightQuest>().CurrentQuest = quest;
             isQuestStart = true;
+            QuestManager.QuestInProgress(quest);
             HideScroll();
             HideQuestScroll();
         }

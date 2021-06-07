@@ -5,13 +5,17 @@ namespace UrfuProject
 {
     public class Winning : MonoBehaviour
     {
-
-        LevelManager levelManager;
-        int CurrentQuest;
+        private LevelManager levelManager;
+        private Quest currentQuest;
 
         public void Start()
         {
-            CurrentQuest = PlayerPrefs.GetInt("CurrentQuestIndex", 0);
+
+        }
+
+        public void SetQuest(Quest quest)
+        {
+            currentQuest = quest;
         }
 
         public void Exit()
@@ -24,10 +28,16 @@ namespace UrfuProject
         public void Continue()
         {
             //TODO Save
-            //manager.QuestCompleted();
-            PlayerPrefs.SetInt("CompletedQuest", CurrentQuest);
-            //QuestManager.OnQuestCompleted.Invoke(0);
-            LevelManager.OnQuestCompleted();
+            GameStatistic.AddQuestPoint(currentQuest.Level);
+            GameStatistic.AddLaboratoryPoints(GameStatistic.Sciences.Math);
+            GameStatistic.Money += currentQuest.Reward;
+            Cursor.lockState = CursorLockMode.Locked;
+            gameObject.SetActive(false);
+            Time.timeScale = 1;
+            Debug.Log($"Money {GameStatistic.Money}");
+            Debug.Log($"Science {GameStatistic.SciencePoints}");
+            GameStatistic.OnStatsChanged?.Invoke();
+            //LevelManager.OnQuestCompleted();
         }
     }
 }
