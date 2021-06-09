@@ -11,7 +11,6 @@ namespace UrfuProject
         private const string MoneyText = "Деньги";
 
         public GameObject exitPanel;
-        public GameObject questsPanel;
         public Text sciencePointsText;
         public Text moneyText;
 
@@ -53,16 +52,8 @@ namespace UrfuProject
 
         public void LoadMainMenu()
         {
-            SceneManager.LoadScene((int)GameStatistic.Scenes.Menu);
-        }
-
-        public void ShowQuestsTable()
-        {
-            ActivatePanel(questsPanel);
-        }
-        public void HideQuestsTable()
-        {
-            DeactivatePanel(questsPanel);
+            Time.timeScale = 1;
+            LevelManager.LoadLevel(Scenes.MenuScene);
         }
 
         public void Quit()

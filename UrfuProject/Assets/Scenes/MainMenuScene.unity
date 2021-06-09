@@ -285,7 +285,6 @@ GameObject:
   - component: {fileID: 209738402}
   - component: {fileID: 209738401}
   - component: {fileID: 209738400}
-  - component: {fileID: 209738403}
   - component: {fileID: 209738404}
   m_Layer: 5
   m_Name: SettingsButton
@@ -394,18 +393,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209738398}
   m_CullTransparentMesh: 0
---- !u!114 &209738403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209738398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f82a3cc398cce4d9fdafb04d5966ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &209738404
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -718,7 +705,6 @@ GameObject:
   - component: {fileID: 801261965}
   - component: {fileID: 801261964}
   - component: {fileID: 801261963}
-  - component: {fileID: 801261966}
   - component: {fileID: 801261967}
   m_Layer: 5
   m_Name: QuitButton
@@ -838,18 +824,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801261961}
   m_CullTransparentMesh: 0
---- !u!114 &801261966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801261961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f82a3cc398cce4d9fdafb04d5966ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &801261967
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -966,7 +940,6 @@ GameObject:
   - component: {fileID: 928156098}
   - component: {fileID: 928156097}
   - component: {fileID: 928156096}
-  - component: {fileID: 928156099}
   - component: {fileID: 928156100}
   m_Layer: 5
   m_Name: StartGameButton
@@ -1086,18 +1059,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928156094}
   m_CullTransparentMesh: 0
---- !u!114 &928156099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928156094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f82a3cc398cce4d9fdafb04d5966ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &928156100
 BoxCollider2D:
   m_ObjectHideFlags: 0

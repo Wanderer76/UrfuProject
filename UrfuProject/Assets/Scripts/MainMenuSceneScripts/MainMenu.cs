@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace UrfuProject
 {
@@ -13,7 +12,7 @@ namespace UrfuProject
 
         public void StartGame()
         {
-            SceneManager.LoadScene((int)GameStatistic.Scenes.MainScene);
+            LevelManager.LoadLevel(Scenes.MainScene);
             QuestManager.GetNewQuests();
         }
 

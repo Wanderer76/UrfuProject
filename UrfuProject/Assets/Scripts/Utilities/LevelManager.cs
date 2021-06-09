@@ -19,12 +19,13 @@ namespace UrfuProject
             DontDestroyOnLoad(this);
         }
 
-        public void LoadLevel(string levelName)
+        public static void LoadLevel(string levelName)
         {
             SceneManager.LoadScene(levelName);
         }
         public void StartQuest(int levelIndex)
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(levelIndex);
         }
         public void StartQuest(string levelName)
