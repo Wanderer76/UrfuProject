@@ -8,11 +8,6 @@ namespace UrfuProject
         private LevelManager levelManager;
         private Quest currentQuest;
 
-        public void Start()
-        {
-
-        }
-
         public void SetQuest(Quest quest)
         {
             currentQuest = quest;

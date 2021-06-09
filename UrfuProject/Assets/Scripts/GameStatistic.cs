@@ -8,6 +8,7 @@ namespace UrfuProject
         {
             Menu = 0,
             MainScene,
+            Dock
         }
 
         public enum Sciences
