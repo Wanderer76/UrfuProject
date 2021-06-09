@@ -23,7 +23,7 @@ namespace UrfuProject
 
         public static int Money { get; set; } = 1024;
 
-        public static int SciencePoints { get; private set; } = 0;
+        public static int SciencePoints { get; set; } = 0;
 
         public static int LaboratoryLevel { get; set; } = 2;
 

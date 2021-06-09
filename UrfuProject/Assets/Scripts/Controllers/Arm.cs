@@ -11,15 +11,17 @@ public class Arm : MonoBehaviour
     public float interactDistance = 2f;
     private float distanceToPlayer;
     private new Rigidbody rigidbody;
+    private Transform playerTransform;
 
-    private void Start()
+    private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        playerTransform = player.GetComponent<Transform>();
     }
 
     private void OnMouseOver()
     {
-        distanceToPlayer = Vector3.Distance(player.GetComponent<Transform>().position, transform.position);
+        distanceToPlayer = Vector3.Distance(playerTransform.position, transform.position);
         if (distanceToPlayer < interactDistance)
         {
             if (transform.parent == null)
@@ -42,7 +44,7 @@ public class Arm : MonoBehaviour
         armIndicator.enabled = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

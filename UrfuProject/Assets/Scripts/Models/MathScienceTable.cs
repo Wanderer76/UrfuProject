@@ -14,8 +14,6 @@ namespace UrfuProject
         private HashSet<Quest> availableQuests;
         private bool isQuestStart = false;
 
-        public int CurrentQuest { get; private set; }
-
         [Header("Свойства для открытия свитка")]
         public GameObject player;
         public GameObject scroll;
@@ -35,7 +33,7 @@ namespace UrfuProject
         {
             if (!isQuestStart)
             {
-                foreach (var quest in QuestManager.Quests.Where(q => q.ScienceType == ScienceType.Math && q.Status == QuestStatus.None))
+                foreach (var quest in QuestManager.Quests.Where(q => q.ScienceType == ScienceType.Math && q.Status != QuestStatus.Completed))
                 {
                     availableQuests.Add(quest);
                 }
@@ -43,6 +41,7 @@ namespace UrfuProject
 
             if (availableQuests.Count > 0)
             {
+                questScroll.GetComponent<MeshRenderer>().enabled = true;
                 if (availableQuests.First().Status == QuestStatus.Completed)
                 {
                     var prefab = questsPrefabs.Where(pref => pref.GetComponentInChildren<WeightQuest>() != null).First();
@@ -57,20 +56,26 @@ namespace UrfuProject
             {
                 questScroll.SetActive(true);
             }
+        }
 
-            distanceToPlayer = Vector3.Distance(player.GetComponent<Transform>().position, transform.position);
-
-            if (distanceToPlayer < interactDistance && questScroll.activeSelf)
+        private void OnMouseOver()
+        {
+            if (!isQuestStart && questScroll.activeSelf)
             {
-                armIndicator.enabled = true;
-                if (Input.GetKeyDown(takeObjectKey))
-                {
-                    ShowScroll();
-                }
-            }
-            else
-                armIndicator.enabled = false;
+                distanceToPlayer = Vector3.Distance(player.GetComponent<Transform>().position, transform.position);
 
+                if (distanceToPlayer < interactDistance && questScroll.activeSelf)
+                {
+                    armIndicator.enabled = true;
+
+                    if (Input.GetKeyDown(takeObjectKey))
+                    {
+                        ShowScroll();
+                    }
+                }
+                else
+                    armIndicator.enabled = false;
+            }
         }
 
         private void OnMouseExit()
@@ -80,6 +85,7 @@ namespace UrfuProject
 
         public void HideScroll()
         {
+            questScroll.SetActive(false);
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
             scroll.SetActive(false);
@@ -87,10 +93,10 @@ namespace UrfuProject
 
         public void ShowScroll()
         {
-            Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
             scroll.GetComponent<Scroll>().SetQuest(availableQuests.First());
             scroll.SetActive(true);
+            Time.timeScale = 0;
         }
 
 
@@ -108,15 +114,7 @@ namespace UrfuProject
             return availableQuests.Count;
         }
 
-        public void ShowQuestScroll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        List<Quest> IScienceTable.GetQuests()
-        {
-            throw new System.NotImplementedException();
-        }
+        
         public void AcceptQuest()
         {
             var quest = availableQuests.First();
@@ -124,6 +122,7 @@ namespace UrfuProject
             prefab.SetActive(true);
             prefab.GetComponentInChildren<WeightQuest>().CurrentQuest = quest;
             isQuestStart = true;
+            questScroll.GetComponent<MeshRenderer>().enabled = false;
             QuestManager.QuestInProgress(quest);
             HideScroll();
             HideQuestScroll();
