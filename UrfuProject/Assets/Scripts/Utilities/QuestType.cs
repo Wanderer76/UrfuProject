@@ -2,8 +2,8 @@
 {
     public enum QuestType
     {
-        Weights,
-        Dock,
-        None
+        Weights = 0,
+        Dock = 1,
+        None = 2
     }
 }

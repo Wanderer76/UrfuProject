@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace UrfuProject
@@ -62,20 +60,25 @@ namespace UrfuProject
         {
             if (!isQuestStart && questScroll.activeSelf)
             {
-                distanceToPlayer = Vector3.Distance(player.GetComponent<Transform>().position, transform.position);
-
-                if (distanceToPlayer < interactDistance && questScroll.activeSelf)
-                {
-                    armIndicator.enabled = true;
-
-                    if (Input.GetKeyDown(takeObjectKey))
-                    {
-                        ShowScroll();
-                    }
-                }
-                else
-                    armIndicator.enabled = false;
+                ShowAvailableIndicator();
             }
+        }
+
+        public void ShowAvailableIndicator()
+        {
+            distanceToPlayer = Vector3.Distance(player.GetComponent<Transform>().position, transform.position);
+
+            if (distanceToPlayer < interactDistance && questScroll.activeSelf)
+            {
+                armIndicator.enabled = true;
+
+                if (Input.GetKeyDown(takeObjectKey))
+                {
+                    ShowScroll();
+                }
+            }
+            else
+                armIndicator.enabled = false;
         }
 
         private void OnMouseExit()
@@ -114,18 +117,21 @@ namespace UrfuProject
             return availableQuests.Count;
         }
 
-        
+
         public void AcceptQuest()
         {
             var quest = availableQuests.First();
-            var prefab = questsPrefabs.Where(pref => pref.GetComponentInChildren<WeightQuest>() != null).First();
-            prefab.SetActive(true);
-            prefab.GetComponentInChildren<WeightQuest>().CurrentQuest = quest;
-            isQuestStart = true;
-            questScroll.GetComponent<MeshRenderer>().enabled = false;
-            QuestManager.QuestInProgress(quest);
-            HideScroll();
-            HideQuestScroll();
+            if (quest.Type == QuestType.Weights)
+            {
+                var prefab = questsPrefabs.Where(pref => pref.GetComponentInChildren<WeightQuest>() != null).First();
+                prefab.SetActive(true);
+                prefab.GetComponentInChildren<WeightQuest>().CurrentQuest = quest;
+                isQuestStart = true;
+                questScroll.GetComponent<MeshRenderer>().enabled = false;
+                QuestManager.QuestInProgress(quest);
+                HideScroll();
+                HideQuestScroll();
+            }
         }
     }
 }

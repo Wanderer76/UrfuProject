@@ -6,11 +6,12 @@ namespace UrfuProject
 {
     public class WeightQuest : MonoBehaviour
     {
+        public QuestType Type { get; } = QuestType.Weights;
+
         public GameObject winPanel;
         public List<GameObject> boxes;
         private List<GameObject> boxesPositions;
         public Collider platform;
-
         public Quest CurrentQuest;
 
         private void Start()

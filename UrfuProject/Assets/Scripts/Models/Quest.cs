@@ -22,6 +22,7 @@ namespace UrfuProject
             Status = QuestStatus.None;
             ScienceType = science;
             SceneName = "MainScene";
+            Type = type;
 
             switch (science)
             {
