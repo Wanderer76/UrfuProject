@@ -13,7 +13,7 @@ public class Arm : MonoBehaviour
     private new Rigidbody rigidbody;
     private Transform playerTransform;
 
-    private void Awake()
+    private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         playerTransform = player.GetComponent<Transform>();
