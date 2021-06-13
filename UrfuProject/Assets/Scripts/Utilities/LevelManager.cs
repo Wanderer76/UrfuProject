@@ -35,8 +35,7 @@ namespace UrfuProject
 
         public static void OnQuestCompleted()
         {
-            //QuestManager.OnQuestCompleted.Invoke(CurrentScene);
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(Scenes.MainScene);
         }
     }
 }

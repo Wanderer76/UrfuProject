@@ -10,6 +10,8 @@ namespace UrfuProject
         private void Start()
         {
             characterController = GetComponent<CharacterController>();
+            if (Time.timeScale == 0)
+                Time.timeScale = 1;
         }
 
         private void Update()

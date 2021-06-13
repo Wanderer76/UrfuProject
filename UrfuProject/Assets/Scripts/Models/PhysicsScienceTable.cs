@@ -129,14 +129,16 @@ namespace UrfuProject
         public void AcceptQuest()
         {
             var quest = availableQuests.First();
+            HideScroll();
+            HideQuestScroll();
+            Time.timeScale = 1;
             if (quest.Type == QuestType.Dock)
             {
                 isQuestStart = true;
                 questScroll.GetComponent<MeshRenderer>().enabled = false;
-                HideScroll();
-                HideQuestScroll();
+                RaftQuest.currentQuest = quest;
                 QuestManager.QuestInProgress(quest);
-                LevelManager.LoadLevel(Scenes.DockScene);
+                LevelManager.LoadLevel(quest.SceneName);
             }
         }
     }

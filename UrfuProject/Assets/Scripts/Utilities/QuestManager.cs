@@ -28,9 +28,11 @@ namespace UrfuProject
 
         public static void QuestCompleted(Quest quest)
         {
-            Quests.Where(q => q.MainText == quest.MainText && q.Title == quest.Title && q.ScienceType == quest.ScienceType).First().Status = QuestStatus.Completed;
+            var foundQuest = Quests.Where(q => q.MainText == quest.MainText && q.Title == quest.Title && q.ScienceType == quest.ScienceType).First();
+            foundQuest.Status = QuestStatus.Completed;
+            database.SetStatus(quest, QuestStatus.Completed);
         }
-        
+
         public static void QuestInProgress(Quest quest)
         {
             Quests.Where(q => q.MainText == quest.MainText && q.Title == quest.Title && q.ScienceType == quest.ScienceType).First().Status = QuestStatus.InPregress;

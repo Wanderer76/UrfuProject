@@ -96,6 +96,7 @@ namespace UrfuProject
                 Cursor.lockState = CursorLockMode.None;
                 QuestManager.QuestCompleted(CurrentQuest);
                 winPanel.GetComponent<Winning>().SetQuest(CurrentQuest);
+                winPanel.GetComponent<Winning>().SetWinStatus();
                 winPanel.SetActive(true);
                 foreach(var gold in boxes)
                 {

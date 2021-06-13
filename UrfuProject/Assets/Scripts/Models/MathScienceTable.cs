@@ -121,6 +121,9 @@ namespace UrfuProject
         public void AcceptQuest()
         {
             var quest = availableQuests.First();
+            HideScroll();
+            HideQuestScroll();
+            Time.timeScale = 1;
             if (quest.Type == QuestType.Weights)
             {
                 var prefab = questsPrefabs.Where(pref => pref.GetComponentInChildren<WeightQuest>() != null).First();
@@ -129,8 +132,6 @@ namespace UrfuProject
                 isQuestStart = true;
                 questScroll.GetComponent<MeshRenderer>().enabled = false;
                 QuestManager.QuestInProgress(quest);
-                HideScroll();
-                HideQuestScroll();
             }
         }
     }

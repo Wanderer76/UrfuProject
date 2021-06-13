@@ -33,5 +33,10 @@ namespace UrfuProject
             var typeQuests = data[type];
             return typeQuests[new Random().Next(0, typeQuests.Count - 1)];
         }
+
+        public void SetStatus(Quest quest, QuestStatus status)
+        {
+            data[quest.ScienceType].Where(q => q.MainText == quest.MainText).First().Status = status;
+        }
     }
 }
