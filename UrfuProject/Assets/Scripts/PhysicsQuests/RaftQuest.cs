@@ -60,10 +60,10 @@ namespace UrfuProject
                 massAndDensityText.text = $"Масса: {mass}\nПлотность {density}";
                 massAndDensityText.enabled = true;
             }
-        } 
+        }
         private void OnMouseExit()
         {
-                massAndDensityText.enabled = false;
+            massAndDensityText.enabled = false;
         }
 
         public void LaunchRaft()
@@ -78,14 +78,14 @@ namespace UrfuProject
             }
             Debug.Log($"Archimed force = {ArchimedForce}, SummaryForce = {allForce}");
             winning.SetQuest(currentQuest);
-            if (allForce > ArchimedForce)
+            if (ArchimedForce - allForce <= 500)
+            {
+                winning.SetWinStatus();
+            }
+            else
             {
                 GetComponent<Rigidbody>().isKinematic = false;
                 winning.SetFailStatus();
-            }
-            if (allForce <= ArchimedForce)
-            {
-                winning.SetWinStatus();
             }
             winPanel.SetActive(true);
         }

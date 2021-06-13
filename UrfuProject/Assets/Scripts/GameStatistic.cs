@@ -1,9 +1,11 @@
-﻿using UnityEngine.Events;
+﻿using System.Collections.Generic;
+using UnityEngine.Events;
 
 namespace UrfuProject
 {
     public class GameStatistic
     {
+
         public enum Scenes
         {
             Menu = 0,
@@ -28,6 +30,15 @@ namespace UrfuProject
         public static int LaboratoryLevel { get; set; } = 2;
 
         public static int QuestCompleted { get; }
+
+
+        public static Dictionary<Sciences, bool> LaboratoryBoughts = new Dictionary<Sciences, bool>
+        {
+            {Sciences.Math,true },
+            {Sciences.Physics,false },
+            {Sciences.Chemestry,false },
+            {Sciences.Biology,false }
+        };
 
 
         public static void AddLaboratoryPoints(Sciences koef)

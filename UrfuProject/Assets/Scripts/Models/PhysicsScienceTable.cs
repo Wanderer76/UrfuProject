@@ -8,7 +8,6 @@ namespace UrfuProject
 {
     public class PhysicsScienceTable : MonoBehaviour, IScienceTable
     {
-
         public GameObject[] questsPrefabs;
         public GameObject questScroll;
         private HashSet<Quest> availableQuests;
@@ -30,10 +29,17 @@ namespace UrfuProject
         {
             availableQuests = new HashSet<Quest>();
 
+            if (GameStatistic.LaboratoryBoughts[GameStatistic.Sciences.Physics] == true)
+            {
+                buyTable.SetActive(false);
+                inventory.SetActive(true);
+            }
+
             BoughtController.OnTryingToBuy.AddListener(() =>
             {
                 buyTable.SetActive(false);
                 inventory.SetActive(true);
+                GameStatistic.LaboratoryBoughts[GameStatistic.Sciences.Physics] = true;
             });
         }
 
