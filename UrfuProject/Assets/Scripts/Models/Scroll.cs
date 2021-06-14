@@ -8,7 +8,6 @@ namespace UrfuProject
     public class Scroll : MonoBehaviour
     {
         public GameObject[] QuestsPrefabs;
-        public Image image;
         public Text TitleText;
         public Text DescriptionText;
 

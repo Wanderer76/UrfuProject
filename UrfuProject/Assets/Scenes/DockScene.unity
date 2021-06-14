@@ -355,7 +355,7 @@ MonoBehaviour:
   arm: {fileID: 1905149427}
   takeObjectKey: 101
   interactDistance: 3
-  mass: 250
+  mass: 600
   massText: {fileID: 4260799}
 --- !u!54 &271199147
 Rigidbody:
@@ -1246,7 +1246,7 @@ MonoBehaviour:
   arm: {fileID: 1905149427}
   takeObjectKey: 101
   interactDistance: 3
-  mass: 80
+  mass: 200
   massText: {fileID: 4260799}
 --- !u!54 &1431308696
 Rigidbody:
@@ -1504,7 +1504,7 @@ MonoBehaviour:
   arm: {fileID: 1905149427}
   takeObjectKey: 101
   interactDistance: 3
-  mass: 125
+  mass: 300
   massText: {fileID: 4260799}
 --- !u!54 &1667934913
 Rigidbody:
@@ -1701,7 +1701,7 @@ MonoBehaviour:
   arm: {fileID: 1905149427}
   takeObjectKey: 101
   interactDistance: 3
-  mass: 60
+  mass: 120
   massText: {fileID: 4260799}
 --- !u!54 &1834895187
 Rigidbody:
@@ -2416,8 +2416,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winPanel: {fileID: 676199084}
-  mass: 30
-  density: 10
+  volume: 3
+  density: 350
   player: {fileID: 359297853}
   massAndDensityText: {fileID: 4260799}
 --- !u!65 &2490194676948068983

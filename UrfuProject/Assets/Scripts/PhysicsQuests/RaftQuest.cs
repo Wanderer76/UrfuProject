@@ -10,7 +10,7 @@ namespace UrfuProject
         public static Quest currentQuest;
         public GameObject winPanel;
 
-        public int mass = 50; //kg
+        public int volume = 50; //kg
         public int density = 1000; //kg/m^3
         private const int G = 10;
         private float ArchimedForce;
@@ -22,7 +22,7 @@ namespace UrfuProject
 
         private void Awake()
         {
-            ArchimedForce = mass * density * G;
+            ArchimedForce = volume * density * G;
             items = new HashSet<TransportedItem>();
             OnLaunchRaft.AddListener(() => { LaunchRaft(); });
 
@@ -57,7 +57,7 @@ namespace UrfuProject
         {
             if (Vector3.Distance(transform.position, player.GetComponent<Transform>().position) < 8)
             {
-                massAndDensityText.text = $"Масса: {mass}\nПлотность {density}";
+                massAndDensityText.text = $"Объем: {volume}\nПлотность {density}";
                 massAndDensityText.enabled = true;
             }
         }
@@ -76,9 +76,10 @@ namespace UrfuProject
             {
                 allForce += item.Force;
             }
+
             Debug.Log($"Archimed force = {ArchimedForce}, SummaryForce = {allForce}");
             winning.SetQuest(currentQuest);
-            if (ArchimedForce - allForce <= 500)
+            if (ArchimedForce - allForce <= 300)
             {
                 winning.SetWinStatus();
             }

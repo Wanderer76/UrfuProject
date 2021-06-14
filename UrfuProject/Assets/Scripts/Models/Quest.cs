@@ -21,7 +21,7 @@ namespace UrfuProject
             Reward = reward;
             Status = QuestStatus.None;
             ScienceType = science;
-            SceneName = "MainScene";
+            SceneName = Scenes.MainScene;
             Type = type;
 
             switch (science)

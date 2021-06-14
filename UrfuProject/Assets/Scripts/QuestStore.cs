@@ -10,8 +10,17 @@ namespace UrfuProject
 
         private readonly Dictionary<ScienceType, List<Quest>> data = new Dictionary<ScienceType, List<Quest>>
         {
-            {ScienceType.Math, new List<Quest>{new Quest("Матан", "Взвесить", 230,  QuestLevel.First, ScienceType.Math ,QuestType.Weights)} },
-            {ScienceType.Physics, new List<Quest>{new Quest("Физика", "Найти оптимальную массу", 230, QuestLevel.Second, ScienceType.Physics, QuestType.Dock)} },
+            {ScienceType.Math, new List<Quest>{
+                new Quest("Помощь ювелиру",
+                    "Добро пожаловать в новую лабораторию, надеюсь ты не закончишь свою жизнь на висилице. Чтобы этого не случилось тебе придется выполнять поручения местных жителей. Давай начнем с чего-то простого. Взвесь самородки для местного ювелира.",
+                    230,  QuestLevel.First, ScienceType.Math ,QuestType.Weights
+                    )
+            }},
+            {ScienceType.Physics, new List<Quest>{
+                new Quest("Неудачливый торговец",
+                    "Что ж, раз ты еще не умер, то тебе надо помочь местному торговцу. Ему необходимо переправить свой в другой город, к сожалению, из-за последнего шторма его корабыль пришел в негодность. К счастью у нас есть старый плот. Тебе предстоит погрузить максимально возможное число предметов. Если то ошибешся и погрузишь слишком много, то плот утонет, если погрузишь недостаточно, то награды не будет",
+                    230, QuestLevel.Second, ScienceType.Physics, QuestType.Dock)
+            } },
         };
 
         public static QuestStore Instance()

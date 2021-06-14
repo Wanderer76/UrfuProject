@@ -31,6 +31,7 @@ namespace UrfuProject
 
         public static int QuestCompleted { get; }
 
+        public static bool isGameNew = true;
 
         public static Dictionary<Sciences, bool> LaboratoryBoughts = new Dictionary<Sciences, bool>
         {
