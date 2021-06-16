@@ -5,14 +5,6 @@ namespace UrfuProject
 {
     public class GameStatistic
     {
-
-        public enum Scenes
-        {
-            Menu = 0,
-            MainScene,
-            Dock
-        }
-
         public enum Sciences
         {
             Math = 0,
@@ -27,10 +19,6 @@ namespace UrfuProject
 
         public static int SciencePoints { get; set; } = 0;
 
-        public static int LaboratoryLevel { get; set; } = 2;
-
-        public static int QuestCompleted { get; }
-
         public static bool isGameNew = true;
 
         public static Dictionary<Sciences, bool> LaboratoryBoughts = new Dictionary<Sciences, bool>
@@ -40,7 +28,6 @@ namespace UrfuProject
             {Sciences.Chemestry,false },
             {Sciences.Biology,false }
         };
-
 
         public static void AddLaboratoryPoints(Sciences koef)
         {
@@ -60,6 +47,7 @@ namespace UrfuProject
                     break;
             }
         }
+
         public static void AddQuestPoint(QuestLevel type)
         {
             switch (type)

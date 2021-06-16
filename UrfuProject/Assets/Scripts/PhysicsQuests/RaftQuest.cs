@@ -10,8 +10,8 @@ namespace UrfuProject
         public static Quest currentQuest;
         public GameObject winPanel;
 
-        public int volume = 50; //kg
-        public int density = 1000; //kg/m^3
+        public int volume = 50;
+        public int density = 1000; 
         private const int G = 10;
         private float ArchimedForce;
         private HashSet<TransportedItem> items;
@@ -52,7 +52,6 @@ namespace UrfuProject
             }
         }
 
-
         private void OnMouseOver()
         {
             if (Vector3.Distance(transform.position, player.GetComponent<Transform>().position) < 8)
@@ -61,6 +60,7 @@ namespace UrfuProject
                 massAndDensityText.enabled = true;
             }
         }
+
         private void OnMouseExit()
         {
             massAndDensityText.enabled = false;

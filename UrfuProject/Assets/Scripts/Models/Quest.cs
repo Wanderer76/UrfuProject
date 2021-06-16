@@ -1,7 +1,6 @@
 ﻿
 namespace UrfuProject
 {
-
     public class Quest
     {
         public string Title { get; }
@@ -37,11 +36,6 @@ namespace UrfuProject
                         SceneName = Scenes.DockScene;
                     break;
             }
-
-
         }
-        //
-        //public static Quest EmptyQuest() =>
-        //     new Quest(null, null, -1,  QuestLevel.None, ScienceType.None);
     }
 }

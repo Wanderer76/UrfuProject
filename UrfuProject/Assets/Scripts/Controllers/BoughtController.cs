@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -10,7 +8,6 @@ namespace UrfuProject
     {
         public int price = 250;
         public int sciencePoints = 300;
-
 
         public GameObject player;
         public Image armIndicator;

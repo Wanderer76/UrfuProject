@@ -10,11 +10,9 @@ namespace UrfuProject
     {
         public static List<Quest> Quests { get; private set; } = new List<Quest>();
         public static UnityEvent<Quest> OnQuestStart;
-
         public static Action<int> OnQuestCompleted;
         public static UnityEvent OnQuestCountChanged = new UnityEvent();
         private static readonly QuestStore database = QuestStore.Instance();
-
         public static int CurrentQuestIndex { get; private set; }
 
 
@@ -37,7 +35,6 @@ namespace UrfuProject
         {
             Quests.Where(q => q.MainText == quest.MainText && q.Title == quest.Title && q.ScienceType == quest.ScienceType).First().Status = QuestStatus.InPregress;
         }
-
 
         public static void RemoveQuest(int index)
         {
@@ -69,6 +66,5 @@ namespace UrfuProject
             RemoveQuest(index);
             OnQuestCompleted?.Invoke(index);
         }
-
     }
 }

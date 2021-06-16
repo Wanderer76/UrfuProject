@@ -7,9 +7,9 @@ namespace UrfuProject
     {
         private static LevelManager instance = null;
 
-
         private LevelManager()
         {
+
         }
 
         private void Start()
@@ -23,11 +23,13 @@ namespace UrfuProject
         {
             SceneManager.LoadScene(levelName);
         }
+
         public void StartQuest(int levelIndex)
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(levelIndex);
         }
+
         public void StartQuest(string levelName)
         {
             SceneManager.LoadScene(levelName);

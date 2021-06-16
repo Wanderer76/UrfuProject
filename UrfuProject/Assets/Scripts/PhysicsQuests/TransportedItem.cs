@@ -4,8 +4,7 @@ using UnityEngine.UI;
 public class TransportedItem : Arm
 {
     [Header("Физические данные")]
-    public int mass = 10;//kg
-    //public int density = 1000; //kg/m^3
+    public int mass = 10;
     private const int G = 10;
     public int Force { get; private set; }
 
@@ -15,6 +14,7 @@ public class TransportedItem : Arm
     {
         Force = mass * G;
     }
+
     private void OnMouseEnter()
     {
         Debug.Log("Enter");

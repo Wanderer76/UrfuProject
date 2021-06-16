@@ -17,8 +17,7 @@ namespace UrfuProject
         private void Start()
         {
             boxesPositions = new List<GameObject>();
-            //MathScroll.OnStartEvent += ((type) => { Debug.Log("EVENT"); if (type == QuestType.Weights) StartQuest(); });
-
+            
             // foreach (var i in boxes)
             // {
             //     i.GetComponent<Rigidbody>().mass = Random.Range(2, 10);
@@ -76,7 +75,7 @@ namespace UrfuProject
             if (boxesPositions.Count != boxes.Count)
                 return;
 
-            bool isEqual = true;
+            var isEqual = true;
 
             for (var i = 0; i < boxes.Count; i++)
             {
@@ -104,11 +103,6 @@ namespace UrfuProject
                 }
                 
             }
-        }
-
-        public void StartQuest()
-        {
-            Debug.Log("Yes");
         }
     }
 }

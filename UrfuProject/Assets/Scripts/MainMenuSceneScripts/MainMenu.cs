@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.Video;
 
 namespace UrfuProject
 {
     public class MainMenu : MonoBehaviour
     {
-
         public VideoPlayer videoPlayer;
 
         public void Quit()
@@ -31,17 +28,5 @@ namespace UrfuProject
                 LevelManager.LoadLevel(Scenes.MainScene);
             }
         }
-
-        //private IEnumerator LoadAfterVideo()
-        //{
-        //    var async = SceneManager.LoadSceneAsync(Scenes.MainScene);
-        //
-        //    while (videoPlayer.isPlaying)
-        //    {
-        //        yield return null;
-        //    }
-        //    yield return async;
-        //}
-
     }
 }

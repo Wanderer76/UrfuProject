@@ -102,11 +102,11 @@ namespace UrfuProject
             Time.timeScale = 0;
         }
 
-
         public void HideQuestScroll()
         {
             questScroll.SetActive(false);
         }
+
         public void AddQuest(Quest newQuest)
         {
             availableQuests.Add(newQuest);
@@ -116,7 +116,6 @@ namespace UrfuProject
         {
             return availableQuests.Count;
         }
-
 
         public void AcceptQuest()
         {

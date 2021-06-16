@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -56,14 +55,6 @@ namespace UrfuProject
             if (availableQuests.Count > 0)
             {
                 questScroll.GetComponent<MeshRenderer>().enabled = true;
-                //if (availableQuests.First().Status == QuestStatus.Completed)
-                //{
-                //    var prefab = questsPrefabs.Where(pref => pref.GetComponentInChildren<WeightQuest>() != null).First();
-                //    prefab.SetActive(false);
-                //    availableQuests.Remove(availableQuests.First());
-                //    isQuestStart = false;
-                //    Debug.Log("Completed");
-                //}
             }
 
             if (availableQuests.Count > 0 && !isQuestStart && inventory.activeSelf)
@@ -134,10 +125,10 @@ namespace UrfuProject
 
         public void AcceptQuest()
         {
+            Time.timeScale = 1;
             var quest = availableQuests.First();
             HideScroll();
             HideQuestScroll();
-            Time.timeScale = 1;
             if (quest.Type == QuestType.Dock)
             {
                 isQuestStart = true;
